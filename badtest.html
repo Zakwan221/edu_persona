@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negative Trait Test</title>
+    <link rel="stylesheet" href="badtest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html">EduPersona</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="test.html"><i class="fas fa-clipboard-list"></i> Color Test</a></li>
+                <li><a href="badtest.html" class="active"><i class="fas fa-clipboard-check"></i> Negative Trait Test</a></li>
+                <li><a href="badinfo.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="test-container">
+        <div class="card">
+            <h1 class="test-title">Negative Trait Test</h1>
+            <p class="test-description">Answer 45 questions honestly to discover which negative personality traits you might possess. This test measures tendencies toward nine different problematic personality types.</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-bar" class="progress-fill"></div>
+                </div>
+                <span id="progress-text">0% Complete</span>
+            </div>
+
+            <!-- Question Display -->
+            <div id="question-container" class="question-container">
+                <h2 id="question-text"></h2>
+                <div id="options-container" class="options-container">
+                    <!-- Options will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="test-actions">
+                    <button id="prev-button" class="button-secondary" style="display: none;"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button id="submit-button" class="button-primary" style="display: none;" disabled>Submit Test <i class="fas fa-check"></i></button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-container" class="results-container">
+                <!-- Results will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2025 EduPersona. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="badtest.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - EduPersona</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="aichatbox.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link active">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <h1>AI Assistant</h1>
+                <p>Ask me anything using voice or text</p>
+            </div>
+            <div class="header-controls">
+                <a href="profileai.html" class="ai-profile-button" title="View AI Personality Analysis">
+                    <i class="fas fa-brain"></i> AI Analysis
+                </a>
+                <button class="mute-button" id="muteButton" title="Toggle voice responses">🔊</button>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai">
+                <div class="message-avatar"><img src="robot.png" alt="AI" class="robot-image"></div>
+                <div class="message-wrapper">
+                    <div class="message-content">
+                        Hello! I'm your AI assistant. How can I help you today? You can type your question or use the microphone to speak.
+                        <div class="ai-tip">
+                            💡 <strong>Tip:</strong> For a comprehensive personality analysis, click the <strong>"🧠 AI Analysis"</strong> button above!
+                        </div>
+                    </div>
+                    <div class="message-time" id="welcomeTime"></div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar"><img src="robot.png" alt="AI" class="robot-image"></div>
+                <div class="typing-content">
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <div class="input-container">
+                <input type="text" class="message-input" id="messageInput" placeholder="Type your message or use voice...">
+                <button class="input-button mic-button" id="micButton">🎤</button>
+                <button class="input-button send-button" id="sendButton">📤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="aichatbox.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Personality Test</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html">PersonaQuest</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="test.html" class="active"><i class="fas fa-clipboard-list"></i> Test</a></li>
+                <li><a href="badtest.html"><i class="fas fa-clipboard-check"></i> Negative Trait Test</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="test-container">
+        <div class="card">
+            <h1 class="test-title">Color Personality Test</h1>
+            <p class="test-description">Answer 40 questions to discover your color personality. This test will reveal the color that best represents your personality traits and characteristics.</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-bar" class="progress-fill"></div>
+                </div>
+                <span id="progress-text">0% Complete</span>
+            </div>
+
+            <!-- Question Display -->
+            <div id="question-container" class="question-container">
+                <h2 id="question-text"></h2>
+                <div id="options-container" class="options-container">
+                    <!-- Options will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="result-actions">
+                    <button id="prev-button" class="button-secondary" style="display: none;"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button id="submit-button" class="button-primary" style="display: none;" disabled>Submit Test <i class="fas fa-check"></i></button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-container" class="results-container">
+                <!-- Results will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2025 EduPersona. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>

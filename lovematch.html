@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Match Compatibility - Edu Persona</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-light: #81C784;
+            --primary-dark: #388E3C;
+            --accent-color: #66cdaa;
+            --accent-light: #8fdfbf;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-light: #888888;
+            --bg-color: #F5F5F5;
+            --card-bg: #ffffff;
+            --card-bg-hover: #f0f9f5;
+            --border-color: #E0E0E0;
+            --success-color: #4caf50;
+            --warning-color: #FFC107;
+            --error-color: #FF5252;
+            --background-light: #F5F5F5;
+            --font-main: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            --shadow-sm: 0 2px 10px rgba(76, 175, 80, 0.05);
+            --shadow-md: 0 5px 20px rgba(76, 175, 80, 0.1);
+            --shadow-lg: 0 10px 30px rgba(76, 175, 80, 0.15);
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Love Match Container */
+        .love-match-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Header Section */
+        .info-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Subpage Navigation */
+        .subpage-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .subpage-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .subpage-link:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .subpage-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Page Intro - Improved */
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            padding: 2rem 1.8rem;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-light);
+            border-radius: 3px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem auto 0;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* Search Section - Improved */
+        .search-section {
+            background-color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-section:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .search-section h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .search-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-light);
+            border-radius: 3px;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+            outline: none;
+            background-color: white;
+        }
+
+        .button {
+            padding: 1rem 1.8rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .button-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .button-primary:active {
+            transform: translateY(-1px);
+        }
+
+        /* Toggle Buttons - Improved and more compact */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .view-toggle button {
+            padding: 0.9rem 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            background-color: #f0f0f0;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 200px;
+        }
+        
+        .view-toggle button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            opacity: 0;
+            z-index: -1;
+            transition: var(--transition-smooth);
+        }
+        
+        .view-toggle button:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .view-toggle button:hover::before {
+            opacity: 1;
+        }
+        
+        .view-toggle button.active {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .view-toggle button.active:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Match Cards Grid - Improved */
+        .top-matches-grid,
+        .full-compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            position: relative;
+            max-width: 1080px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Match Cards - Improved */
+        .match-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.95rem;
+        }
+
+        .match-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .match-header {
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background-color: #fafafa;
+            transition: var(--transition-smooth);
+        }
+        
+        .match-card:hover .match-header {
+            background-color: #f1f8f2;
+        }
+
+        .match-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .color-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 2px solid white;
+            transition: var(--transition-smooth);
+        }
+        
+        .match-card:hover .color-dot {
+            transform: scale(1.1);
+        }
+
+        .color-plus {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Color-specific dots with improved colors */
+        .red { background-color: #e74c3c; }
+        .blue { background-color: #3498db; }
+        .green { background-color: #2ecc71; }
+        .yellow { background-color: #f1c40f; }
+        .purple { background-color: #9b59b6; }
+        .black { background-color: #2c3e50; }
+        .white { 
+            background-color: #ffffff; 
+            border: 2px solid #e0e0e0;
+        }
+        .grey { background-color: #7f8c8d; }
+        .pink { background-color: #e84393; }
+        .chocolate { background-color: #8b4513; }
+
+        .compatibility-badge {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(76, 175, 80, 0.2);
+            transition: var(--transition-smooth);
+        }
+        
+        .match-card:hover .compatibility-badge {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .match-content {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+        
+        .match-card:hover .match-content {
+            background-color: rgba(76, 175, 80, 0.02);
+        }
+
+        .match-summary {
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.06);
+            padding-bottom: 1rem;
+        }
+
+        .match-strengths, 
+        .match-challenges {
+            margin-top: 1.5rem;
+        }
+        
+        .match-strengths {
+            margin-top: auto;
+        }
+
+        .match-strengths h4, 
+        .match-challenges h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .match-strengths h4::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234caf50'%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.5 14.5l-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .match-challenges h4::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffc107'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-.83 0-1.5-.67-1.5-1.5S11.17 14 12 14s1.5.67 1.5 1.5S12.83 17 12 17zm1-4h-2V7h2v6z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .match-strengths ul, 
+        .match-challenges ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .match-strengths li, 
+        .match-challenges li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            font-size: 0.85rem;
+        }
+        
+        .match-strengths li::before {
+            content: '';
+            position: absolute;
+            left: -1.2rem;
+            top: 0.5rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--success-color);
+        }
+        
+        .match-challenges li::before {
+            content: '';
+            position: absolute;
+            left: -1.2rem;
+            top: 0.5rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--warning-color);
+        }
+
+        /* Search Summary - Improved */
+        .search-summary {
+            background-color: #f4fbf5;
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-color);
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .search-summary h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .search-summary p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .search-summary p:last-child {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        .loading-spinner::after {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Highlight effect */
+        .match-card.highlight {
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+            transform: translateY(-15px) scale(1.03);
+            z-index: 100;
+            border: 2px solid var(--primary-color);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .top-matches-grid,
+            .full-compatibility-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            
+            .match-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            
+            .match-content {
+                padding: 1rem;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .view-toggle {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .view-toggle button {
+                width: 100%;
+                padding: 0.8rem;
+            }
+            
+            .love-match-container {
+                padding: 0.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .search-section {
+                padding: 1.2rem;
+            }
+            
+            .match-strengths li, 
+            .match-challenges li {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Elegant scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="welcome.html" class="nav-link active">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main class="love-match-container">
+        <section class="info-header">
+            <h1>Love Match Compatibility</h1>
+            <p>Discover how different color personalities interact in romantic relationships</p>
+            
+            <div class="subpage-nav">
+                <a href="info.html" class="subpage-link">Overview</a>
+                <a href="description.html" class="subpage-link">Full Descriptions</a>
+                <a href="weakandstrength.html" class="subpage-link">Strengths & Weaknesses</a>
+                <a href="friend.html" class="subpage-link">Friendship Compatibility</a>
+                <a href="lovematch.html" class="subpage-link active">Love Match</a>
+            </div>
+        </section>
+
+        <section class="page-intro">
+            <h2 class="page-title">Color Personality Love Match</h2>
+            <p class="page-subtitle">Explore our comprehensive collection of personality combinations to discover relationship dynamics between different color types. Whether you're searching for your ideal partner or understanding your current relationship, our insights can help guide your journey.</p>
+        </section>
+
+        <section class="search-section">
+            <h3>Find Your Love Match</h3>
+            <div class="search-container">
+                <select id="color1Select" class="form-input">
+                    <option value="">Select First Color</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Chocolate">Chocolate</option>
+                </select>
+                <select id="color2Select" class="form-input">
+                    <option value="">Select Second Color</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Chocolate">Chocolate</option>
+                </select>
+                <button id="matchButton" class="button button-primary">Find Match</button>
+            </div>
+            
+            <div id="searchSummary" class="search-summary" style="display: none;">
+                <!-- Will be filled dynamically -->
+            </div>
+            
+            <div class="loading-spinner" id="loadingSpinner"></div>
+        </section>
+
+        <div class="view-toggle">
+            <button id="topMatchesBtn" class="active">Top 14 Combinations</button>
+            <button id="allMatchesBtn">All 55 Combinations</button>
+        </div>
+
+        <!-- Top 14 matches section -->
+        <section id="topMatchesSection" class="top-matches-grid">
+            <!-- Will be populated dynamically -->
+        </section>
+
+        <!-- All combinations section (initially hidden) -->
+        <section id="allMatchesSection" class="full-compatibility-grid" style="display: none;">
+            <!-- Will be populated dynamically -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 EduPersona. All rights reserved.</p>
+    </footer>
+
+    <script src="love-match-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements
+            const color1Select = document.getElementById('color1Select');
+            const color2Select = document.getElementById('color2Select');
+            const matchButton = document.getElementById('matchButton');
+            const searchSummary = document.getElementById('searchSummary');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const topMatchesSection = document.getElementById('topMatchesSection');
+            const allMatchesSection = document.getElementById('allMatchesSection');
+            const topMatchesBtn = document.getElementById('topMatchesBtn');
+            const allMatchesBtn = document.getElementById('allMatchesBtn');
+            
+            // Check if love match data is available
+            if (typeof window.loveMatchData === 'undefined' || typeof window.getMatchDetails !== 'function') {
+                console.error('Love match data not found. Make sure love-match-data.js is loaded correctly.');
+                searchSummary.style.display = 'block';
+                searchSummary.innerHTML = '<strong>Error:</strong> Love match data could not be loaded. Please check if love-match-data.js is included properly.';
+                return;
+            }
+            
+            // Function to create a match card element
+            function createMatchCard(matchData, isTopMatch = false) {
+                // Create new card element
+                const card = document.createElement('div');
+                card.className = 'match-card';
+                card.setAttribute('data-color1', matchData.colors[0]);
+                card.setAttribute('data-color2', matchData.colors[1]);
+                
+                // Get compatibility description
+                const compatibilityDescription = window.getCompatibilityDescription(matchData.compatibility);
+                
+                // Convert color names to lowercase for CSS classes
+                const color1Class = matchData.colors[0].toLowerCase();
+                const color2Class = matchData.colors[1].toLowerCase();
+                
+                // Create card content
+                card.innerHTML = `
+                    <div class="match-header">
+                        <div class="match-title">
+                            <span class="color-dot ${color1Class}"></span>
+                            <span class="color-plus">+</span>
+                            <span class="color-dot ${color2Class}"></span>
+                        </div>
+                        <div class="compatibility-badge">${compatibilityDescription}</div>
+                    </div>
+                    <div class="match-content">
+                        <p class="match-summary">${matchData.dynamicsSummary}</p>
+                        <div class="match-strengths">
+                            <h4>Relationship Strengths</h4>
+                            <ul>
+                                ${matchData.strengths.map(strength => `<li>${strength}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="match-challenges">
+                            <h4>Potential Challenges</h4>
+                            <ul>
+                                ${matchData.challenges.map(challenge => `<li>${challenge}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                
+                return card;
+            }
+            
+            // Function to populate top 14 matches
+            function populateTopMatches() {
+                // Clear existing content
+                topMatchesSection.innerHTML = '';
+                
+                // Define the top 14 matches
+                const topMatches = [
+                    ['Black', 'Yellow'],
+                    ['Black', 'Pink'],
+                    ['Black', 'Red'],
+                    ['White', 'Red'],
+                    ['White', 'Chocolate'],
+                    ['White', 'Purple'],
+                    ['Red', 'Pink'],
+                    ['Blue', 'Pink'],
+                    ['Blue', 'Purple'],
+                    ['Blue', 'Yellow'],
+                    ['Yellow', 'Green'],
+                    ['Green', 'Purple'],
+                    ['Green', 'Grey'],
+                    ['Chocolate', 'Grey']
+                ];
+                
+                // Create and append cards
+                topMatches.forEach(combo => {
+                    // Find the corresponding data from the full dataset
+                    const matchData = window.getMatchDetails(combo[0], combo[1]);
+                    
+                    if (matchData) {
+                        const card = createMatchCard(matchData, true);
+                        topMatchesSection.appendChild(card);
+                    }
+                });
+            }
+            
+            // Function to populate all combinations
+            function populateAllMatches() {
+                // Don't reload if already populated
+                if (allMatchesSection.children.length > 0) return;
+                
+                // Clear existing content
+                allMatchesSection.innerHTML = '';
+                loadingSpinner.style.display = 'block';
+                
+                // Sort matches by compatibility (highest first)
+                const sortedMatches = [...window.loveMatchData].sort((a, b) => b.compatibility - a.compatibility);
+                
+                // Use setTimeout to avoid blocking the UI
+                setTimeout(() => {
+                    // Create and append cards for all matches
+                    sortedMatches.forEach(matchData => {
+                        const card = createMatchCard(matchData);
+                        allMatchesSection.appendChild(card);
+                    });
+                    
+                    loadingSpinner.style.display = 'none';
+                }, 100);
+            }
+            
+            // Function to find a match card based on colors
+            function findMatchCard(color1, color2, section) {
+                // Remove highlights from all cards
+                document.querySelectorAll('.match-card').forEach(card => {
+                    card.classList.remove('highlight');
+                });
+                
+                // Try to find a card with the matching colors in either order
+                const matchCard = Array.from(section.querySelectorAll('.match-card')).find(card => {
+                    const cardColor1 = card.getAttribute('data-color1');
+                    const cardColor2 = card.getAttribute('data-color2');
+                    
+                    return (
+                        (cardColor1 === color1 && cardColor2 === color2) || 
+                        (cardColor1 === color2 && cardColor2 === color1)
+                    );
+                });
+                
+                return matchCard;
+            }
+            
+            // Function to highlight and scroll to a match
+            function highlightAndScrollToMatch(matchCard, color1, color2) {
+                // Add highlight class
+                matchCard.classList.add('highlight');
+                
+                // Get the match details from data
+                const matchData = window.getMatchDetails(color1, color2);
+                
+                // Show search summary
+                searchSummary.style.display = 'block';
+                
+                // Construct message based on compatibility
+                let compatibilityText;
+                switch (matchData.compatibility) {
+                    case 5: compatibilityText = 'an <strong>Exceptional (5/5)</strong>'; break;
+                    case 4: compatibilityText = 'a <strong>High (4/5)</strong>'; break;
+                    case 3: compatibilityText = 'a <strong>Moderate (3/5)</strong>'; break;
+                    case 2: compatibilityText = 'a <strong>Low (2/5)</strong>'; break;
+                    case 1: compatibilityText = 'a <strong>Challenging (1/5)</strong>'; break;
+                    default: compatibilityText = 'an <strong>Unknown</strong>';
+                }
+                
+                // Display search results
+                searchSummary.innerHTML = `
+                    <h3>${color1} + ${color2} Compatibility</h3>
+                    <p>This combination has ${compatibilityText} compatibility level.</p>
+                    <p>"${matchData.dynamicsSummary}"</p>
+                `;
+                
+                // After showing the results, scroll to the card
+                setTimeout(() => {
+                    matchCard.scrollIntoView({
+                        behavior: 'smooth', 
+                        block: 'center'
+                    });
+                }, 800);
+                
+                // Remove highlight after some time for better visibility
+                setTimeout(() => {
+                    matchCard.classList.remove('highlight');
+                }, 5000);
+            }
+            
+            // Event listener for search button
+            matchButton.addEventListener('click', () => {
+                const color1 = color1Select.value;
+                const color2 = color2Select.value;
+                
+                // Hide previous search summary
+                searchSummary.style.display = 'none';
+                
+                // Validate inputs
+                if (!color1 || !color2) {
+                    searchSummary.style.display = 'block';
+                    searchSummary.innerHTML = '<h3>Please Select Both Colors</h3><p>You need to select both personality colors to find a match.</p>';
+                    return;
+                }
+                
+                // Show loading spinner
+                loadingSpinner.style.display = 'block';
+                
+                // Try to find in top matches first
+                const topMatchCard = findMatchCard(color1, color2, topMatchesSection);
+                
+                if (topMatchCard) {
+                    // Switch to top matches view if not already active
+                    if (allMatchesSection.style.display !== 'none') {
+                        topMatchesBtn.click();
+                    }
+                    
+                    // Highlight and scroll to match
+                    setTimeout(() => {
+                        loadingSpinner.style.display = 'none';
+                        highlightAndScrollToMatch(topMatchCard, color1, color2);
+                    }, 300);
+                } else {
+                    // If not in top matches, ensure all matches are loaded
+                    if (allMatchesSection.children.length === 0) {
+                        populateAllMatches();
+                    }
+                    
+                    // Switch to all matches view
+                    topMatchesSection.style.display = 'none';
+                    allMatchesSection.style.display = 'grid';
+                    topMatchesBtn.classList.remove('active');
+                    allMatchesBtn.classList.add('active');
+                    
+                    // Find in all matches
+                    setTimeout(() => {
+                        const allMatchCard = findMatchCard(color1, color2, allMatchesSection);
+                        
+                        if (allMatchCard) {
+                            loadingSpinner.style.display = 'none';
+                            highlightAndScrollToMatch(allMatchCard, color1, color2);
+                        } else {
+                            // This should not happen if all 55 combinations are in the data
+                            loadingSpinner.style.display = 'none';
+                            searchSummary.style.display = 'block';
+                            searchSummary.innerHTML = `
+                                <h3>No Match Found</h3>
+                                <p>We couldn't find a match for ${color1} + ${color2}. This is unexpected - please try a different combination.</p>
+                            `;
+                        }
+                    }, 500);
+                }
+            });
+            
+            // Event listeners for view toggle buttons
+            topMatchesBtn.addEventListener('click', () => {
+                if (!topMatchesBtn.classList.contains('active')) {
+                    // Update active state
+                    topMatchesBtn.classList.add('active');
+                    allMatchesBtn.classList.remove('active');
+                    
+                    // Switch views
+                    topMatchesSection.style.display = 'grid';
+                    allMatchesSection.style.display = 'none';
+                    
+                    // Scroll back to the top of the section
+                    window.scrollTo({
+                        top: topMatchesSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            allMatchesBtn.addEventListener('click', () => {
+                if (!allMatchesBtn.classList.contains('active')) {
+                    // Update active state
+                    allMatchesBtn.classList.add('active');
+                    topMatchesBtn.classList.remove('active');
+                    
+                    // Show loading spinner if content not yet loaded
+                    if (allMatchesSection.children.length === 0) {
+                        loadingSpinner.style.display = 'block';
+                    }
+                    
+                    // Ensure all matches are loaded
+                    populateAllMatches();
+                    
+                    // Switch views
+                    topMatchesSection.style.display = 'none';
+                    allMatchesSection.style.display = 'grid';
+                    
+                    // Scroll back to the top of the section
+                    window.scrollTo({
+                        top: allMatchesSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Initialize the page with top matches
+            populateTopMatches();
+        });
+    </script>
+</body>
+</html>

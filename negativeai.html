@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negative Trait Analysis - Edu Persona</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="negativeai.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Required Message -->
+    <div id="login-required" class="login-required">
+        <div class="login-message glassmorphism">
+            <i class="fas fa-lock"></i>
+            <h2>Login Required</h2>
+            <p>Please log in to view your negative trait analysis and improvement strategies.</p>
+            <a href="login.html" class="button button-primary">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
+    </div>
+
+    <!-- Negative AI Container -->
+    <div id="negativeai-container" class="negativeai-container" style="display: none;">
+        <!-- Header Section -->
+        <div class="negativeai-header">
+            <div class="back-navigation">
+                <a href="aichatbox.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to AI Chat
+                </a>
+                <a href="profile.html" class="back-button">
+                    <i class="fas fa-user"></i> My Profile
+                </a>
+                <a href="badtest.html" class="back-button">
+                    <i class="fas fa-clipboard-check"></i> Retake Test
+                </a>
+            </div>
+            
+            <div class="ai-header-content">
+                <div class="ai-icon">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Complete Negative Trait Analysis</h1>
+                    <p>Comprehensive analysis with personalized strategies to overcome negative patterns and build positive habits</p>
+                </div>
+                <div class="header-actions">
+                    <a href="aichatbox.html" class="chat-ai-button" title="Chat with AI about your improvement strategies">
+                        <i class="fas fa-comments"></i>
+                        <span>Get AI Guidance</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Overview Section -->
+        <div id="user-overview" class="user-overview">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <div id="summary-negative-traits" class="summary-negative-traits">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Progress Analytics Chart -->
+        <div id="progress-analytics" class="progress-analytics">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- All Traits Analysis -->
+        <div id="all-traits-analysis" class="all-traits-analysis">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Improvement Strategies -->
+        <div id="improvement-strategies" class="improvement-strategies">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Achievement System -->
+        <div id="achievement-system" class="achievement-system">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Progress Tracking -->
+        <div id="progress-tracking" class="progress-tracking">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Habit Tracker -->
+        <div id="habit-tracker" class="habit-tracker">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Actions Section -->
+        <div class="negativeai-actions">
+            <a href="aichatbox.html" class="button button-featured">
+                <i class="fas fa-robot"></i> Get AI Support
+            </a>
+            <a href="badtest.html" class="button button-primary">
+                <i class="fas fa-redo"></i> Retake Assessment
+            </a>
+        </div>
+        
+        <!-- Interactive Features Grid -->
+        <div class="interactive-features">
+            <div class="feature-card improvement-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Progress Analytics</h3>
+                    <p>Visualize your improvement journey with interactive charts showing how your negative traits have changed over time. Track your progress and celebrate your growth!</p>
+                    <a href="#progress-analytics" class="feature-button">
+                        <i class="fas fa-chart-line"></i> View Analytics
+                    </a>
+                </div>
+            </div>
+            
+        
+            
+            <div class="feature-card support-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Get Personalized Support</h3>
+                    <p>Chat with our AI for instant guidance, tips for specific situations, and encouragement when you need it most. Your improvement journey, supported every step!</p>
+                    <a href="aichatbox.html" class="feature-button">
+                        <i class="fas fa-comments"></i> Chat Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="feature-card habit-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Habit Tracking</h3>
+                    <p>Build positive habits to counter negative traits. Track daily practices and maintain streaks for lasting improvement.</p>
+                    <a href="#habit-tracker" class="feature-button">
+                        <i class="fas fa-tasks"></i> Track Habits
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Test Results -->
+    <div id="no-test-results" class="no-test-results" style="display: none;">
+        <div class="no-test-message glassmorphism">
+            <i class="fas fa-clipboard-list"></i>
+            <h2>No Negative Trait Data Available</h2>
+            <p>You haven't taken the negative trait assessment yet. Take the test to get your comprehensive improvement analysis and personalized strategies.</p>
+            <a href="badtest.html" class="button button-primary">
+                <i class="fas fa-play"></i> Take the Assessment
+            </a>
+        </div>
+    </div>
+
+    <!-- Positive Results -->
+    <div id="positive-results" class="positive-results" style="display: none;">
+        <div class="positive-message glassmorphism">
+            <i class="fas fa-medal"></i>
+            <h2>Congratulations!</h2>
+            <p>You don't show significant tendencies toward negative personality traits. This suggests you have a well-balanced personality with healthy interpersonal patterns.</p>
+            <div class="positive-actions">
+                <a href="profileai.html" class="button button-primary">
+                    <i class="fas fa-star"></i> View Positive Analysis
+                </a>
+                <a href="badtest.html" class="button button-secondary">
+                    <i class="fas fa-redo"></i> Retake Assessment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Loading Overlay -->
+    <div id="theme-loading" class="theme-loading" style="display: none;">
+        <div class="theme-loading-content" style="text-align: center; color: white;">
+            <div class="theme-loading-spinner"></div>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">Analyzing your improvement strategies...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="negativeai.js"></script>
+</body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Strengths & Weaknesses - EduPersona</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="info.css">
+    <style>
+        /* Enhanced clean design for strengths and weaknesses page */
+        .description-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .personality-section {
+            margin-bottom: 2.5rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .color-heading {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .color-heading .color-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+        
+        /* Fix for color indicators */
+        .color-indicator.red { background-color: #e74c3c; }
+        .color-indicator.blue { background-color: #3498db; }
+        .color-indicator.green { background-color: #2ecc71; }
+        .color-indicator.yellow { background-color: #f1c40f; }
+        .color-indicator.purple { background-color: #9b59b6; }
+        .color-indicator.black { background-color: #2c3e50; }
+        .color-indicator.white { 
+            background-color: #ffffff; 
+            border: 2px solid #e0e0e0;
+        }
+        .color-indicator.grey { background-color: #7f8c8d; }
+        .color-indicator.pink { background-color: #e84393; }
+        .color-indicator.chocolate { background-color: #8b4513; }
+        
+        .color-heading h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .strength-weakness-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .strength-section, 
+        .weakness-section {
+            background-color: var(--background-light);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .strength-section {
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .weakness-section {
+            border-left: 4px solid var(--error-color);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+        
+        .strength-list,
+        .weakness-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .strength-list li,
+        .weakness-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .strength-list li:before {
+            content: "✓";
+            color: var(--success-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .weakness-list li:before {
+            content: "✗";
+            color: var(--error-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .growth-stress-container {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .growth-stress-container p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .personality-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .personality-nav-item {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .personality-nav-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .personality-nav-item .mini-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        /* Color indicators for nav */
+        .red .mini-indicator { background-color: #ff4d4d; }
+        .blue .mini-indicator { background-color: #4d79ff; }
+        .green .mini-indicator { background-color: #4dff4d; }
+        .yellow .mini-indicator { background-color: #ffff4d; }
+        .purple .mini-indicator { background-color: #9f4dff; }
+        .black .mini-indicator { background-color: #333333; }
+        .white .mini-indicator { background-color: #ffffff; border: 1px solid #dddddd; }
+        .grey .mini-indicator { background-color: #808080; }
+        .pink .mini-indicator { background-color: #ff4d94; }
+        .chocolate .mini-indicator { background-color: #804000; }
+        
+        /* Styled subpage nav to match other pages */
+        .subpage-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .subpage-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .subpage-link:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .subpage-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Info header styling */
+        .info-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .strength-weakness-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .personality-nav {
+                padding: 0 0.5rem;
+            }
+            
+            .color-heading h2 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="welcome.html" class="nav-link active">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main class="description-container">
+        <section class="info-header">
+            <h1>Personality Strengths & Weaknesses</h1>
+            <p>Discover the advantages and challenges of each color personality type</p>
+            
+            <div class="subpage-nav">
+                <a href="info.html" class="subpage-link">Overview</a>
+                <a href="description.html" class="subpage-link">Full Descriptions</a>
+                <a href="weakandstrength.html" class="subpage-link active">Strengths & Weaknesses</a>
+                <a href="friend.html" class="subpage-link">Friendship Compatibility</a>
+                <a href="lovematch.html" class="subpage-link">Love Match</a>
+            </div>
+        </section>
+        
+        <div class="personality-nav">
+            <a href="#red" class="personality-nav-item red"><span class="mini-indicator"></span>Red</a>
+            <a href="#blue" class="personality-nav-item blue"><span class="mini-indicator"></span>Blue</a>
+            <a href="#green" class="personality-nav-item green"><span class="mini-indicator"></span>Green</a>
+            <a href="#yellow" class="personality-nav-item yellow"><span class="mini-indicator"></span>Yellow</a>
+            <a href="#purple" class="personality-nav-item purple"><span class="mini-indicator"></span>Purple</a>
+            <a href="#black" class="personality-nav-item black"><span class="mini-indicator"></span>Black</a>
+            <a href="#white" class="personality-nav-item white"><span class="mini-indicator"></span>White</a>
+            <a href="#grey" class="personality-nav-item grey"><span class="mini-indicator"></span>Grey</a>
+            <a href="#pink" class="personality-nav-item pink"><span class="mini-indicator"></span>Pink</a>
+            <a href="#chocolate" class="personality-nav-item chocolate"><span class="mini-indicator"></span>Chocolate</a>
+        </div>
+
+        <!-- Red Personality Strengths & Weaknesses -->
+        <section id="red" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator red"></div>
+                <h2>Red Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Natural Leadership:</strong> Reds naturally take charge in group situations, providing direction and motivation to others.
+                        </li>
+                        <li>
+                            <strong>Decisiveness:</strong> Able to make quick, confident decisions even under pressure or with limited information.
+                        </li>
+                        <li>
+                            <strong>Goal-Oriented:</strong> Exceptional ability to set clear objectives and pursue them with determination and focus.
+                        </li>
+                        <li>
+                            <strong>Action-Driven:</strong> Strong preference for action over excessive planning or analysis, leading to high productivity.
+                        </li>
+                        <li>
+                            <strong>Confidence:</strong> Self-assured nature that inspires trust and confidence in others.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Impatience:</strong> May rush processes or become frustrated when things move too slowly.
+                        </li>
+                        <li>
+                            <strong>Domineering:</strong> Can sometimes overpower others or dismiss alternative viewpoints in their drive to take control.
+                        </li>
+                        <li>
+                            <strong>Insensitive:</strong> May unintentionally ignore or downplay others' feelings in pursuit of objectives.
+                        </li>
+                        <li>
+                            <strong>Aggressive:</strong> Their assertiveness can sometimes cross into aggression, especially under stress.
+                        </li>
+                        <li>
+                            <strong>Poor Listener:</strong> May focus more on their own ideas and solutions rather than genuinely listening to others.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Reds can benefit from developing greater patience and empathy, learning to listen more attentively to others, and becoming more comfortable with collaborative approaches. Practicing mindfulness and self-reflection can help them recognize when their assertiveness might be overwhelming others.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Reds may become more autocratic, dismissive of input, and prone to anger or frustration. They might push harder toward goals without considering the human cost. Being aware of these tendencies can help Reds develop healthier stress responses.</p>
+            </div>
+        </section>
+
+        <!-- Blue Personality Strengths & Weaknesses -->
+        <section id="blue" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator blue"></div>
+                <h2>Blue Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Analytical Thinking:</strong> Exceptional ability to break down complex problems into manageable components.
+                        </li>
+                        <li>
+                            <strong>Attention to Detail:</strong> Notice and remember details that others might overlook.
+                        </li>
+                        <li>
+                            <strong>Logical Reasoning:</strong> Apply clear, logical thinking to solve problems methodically.
+                        </li>
+                        <li>
+                            <strong>Precision:</strong> Value accuracy and correctness in all their work.
+                        </li>
+                        <li>
+                            <strong>Objectivity:</strong> Able to set aside personal biases when evaluating situations.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Analysis Paralysis:</strong> May overthink decisions, leading to delays or inaction.
+                        </li>
+                        <li>
+                            <strong>Perfectionism:</strong> Setting excessively high standards that create unnecessary stress.
+                        </li>
+                        <li>
+                            <strong>Emotional Detachment:</strong> May struggle to connect with or understand emotional aspects of situations.
+                        </li>
+                        <li>
+                            <strong>Critical Nature:</strong> Tendency to notice flaws and problems more readily than positive aspects.
+                        </li>
+                        <li>
+                            <strong>Inflexibility:</strong> Sometimes resist change or new approaches that haven't been thoroughly tested.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Blues can benefit from developing greater comfort with uncertainty and imperfection, practicing more spontaneity, and working on emotional intelligence. Learning to trust intuition alongside logical analysis can lead to more balanced decision-making.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Blues may become overly critical, withdraw from others, or get stuck in loops of analysis without reaching conclusions. They might become more rigid in their thinking or insist on perfect solutions when good-enough would suffice.</p>
+            </div>
+        </section>
+
+        <!-- Green Personality Strengths & Weaknesses -->
+        <section id="green" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator green"></div>
+                <h2>Green Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Reliability:</strong> Consistent and dependable in their commitments and responsibilities.
+                        </li>
+                        <li>
+                            <strong>Practicality:</strong> Excel at finding realistic, workable solutions to everyday problems.
+                        </li>
+                        <li>
+                            <strong>Balance:</strong> Maintain equilibrium between work and personal life, logic and emotion.
+                        </li>
+                        <li>
+                            <strong>Stability:</strong> Create calm, steady environments where others feel secure.
+                        </li>
+                        <li>
+                            <strong>Teamwork:</strong> Work well with others and value collaborative efforts toward shared goals.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Risk Aversion:</strong> May avoid necessary changes or innovations due to preference for stability.
+                        </li>
+                        <li>
+                            <strong>Lack of Spontaneity:</strong> Can be too structured and inflexible with routines and plans.
+                        </li>
+                        <li>
+                            <strong>Over-conventional:</strong> Sometimes stick too rigidly to traditional approaches when new methods might be better.
+                        </li>
+                        <li>
+                            <strong>Stubborn:</strong> May resist new ideas or changes once they've established their position.
+                        </li>
+                        <li>
+                            <strong>Slow to Adapt:</strong> Can take longer than necessary to adjust to changing circumstances.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Greens can benefit from embracing calculated risks and developing greater comfort with change and innovation. Exploring new experiences and perspectives can broaden their approach and prevent stagnation. Learning to distinguish between helpful structure and limiting rigidity is key.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Greens may become more rigid and inflexible, doubling down on established routines even when they're not working. They might resist outside input and withdraw from social connection. Creating a structured plan for handling change can help Greens manage stress more effectively.</p>
+            </div>
+        </section>
+
+        <!-- Yellow Personality Strengths & Weaknesses -->
+        <section id="yellow" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator yellow"></div>
+                <h2>Yellow Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Enthusiasm:</strong> Natural ability to generate excitement and positive energy.
+                        </li>
+                        <li>
+                            <strong>Creativity:</strong> Innovative thinking and ability to see new possibilities.
+                        </li>
+                        <li>
+                            <strong>Sociability:</strong> Easily connect with others and build networks of relationships.
+                        </li>
+                        <li>
+                            <strong>Adaptability:</strong> Quickly adjust to changing circumstances with minimal resistance.
+                        </li>
+                        <li>
+                            <strong>Optimism:</strong> Maintain positive outlook even in challenging situations.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Distractibility:</strong> May struggle to maintain focus on a single task or commitment.
+                        </li>
+                        <li>
+                            <strong>Disorganization:</strong> Tendency toward chaos in physical spaces and time management.
+                        </li>
+                        <li>
+                            <strong>Impulsiveness:</strong> Making decisions based on momentary excitement without considering consequences.
+                        </li>
+                        <li>
+                            <strong>Difficulty with Details:</strong> May overlook important specifics while focusing on the big picture.
+                        </li>
+                        <li>
+                            <strong>Commitment Issues:</strong> Can struggle to follow through on long-term projects or responsibilities.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Yellows can benefit from developing better organizational systems, practicing sustained focus, and learning to sit with challenging emotions rather than avoiding them. Time management skills and commitment to follow-through can transform their creative ideas into tangible achievements.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Yellows may become scattered, excessively talkative, or use humor inappropriately to deflect serious issues. They might jump from task to task without completing any, or seek excessive social stimulation as a distraction.</p>
+            </div>
+        </section>
+
+        <!-- Purple Personality Strengths & Weaknesses -->
+        <section id="purple" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator purple"></div>
+                <h2>Purple Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Creativity:</strong> Exceptional ability to think outside conventional boundaries and generate innovative ideas.
+                        </li>
+                        <li>
+                            <strong>Intuition:</strong> Strong gut feelings and insights that often prove accurate and valuable.
+                        </li>
+                        <li>
+                            <strong>Depth:</strong> Capacity for profound thinking, emotional understanding, and spiritual awareness.
+                        </li>
+                        <li>
+                            <strong>Vision:</strong> Ability to see possibilities and potential others might miss.
+                        </li>
+                        <li>
+                            <strong>Authenticity:</strong> Genuine self-expression and refusal to conform to superficial expectations.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Moodiness:</strong> May experience significant emotional fluctuations that impact productivity and relationships.
+                        </li>
+                        <li>
+                            <strong>Impracticality:</strong> Sometimes pursue ideas that are interesting but not viable or actionable.
+                        </li>
+                        <li>
+                            <strong>Overcomplication:</strong> Tendency to make things more complex than necessary.
+                        </li>
+                        <li>
+                            <strong>Detachment:</strong> Can become lost in their inner world, disconnecting from external realities.
+                        </li>
+                        <li>
+                            <strong>Perfectionism:</strong> May delay completion of projects seeking an ideal that isn't attainable.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Purples can benefit from developing practical implementation skills to complement their creative vision. Learning to balance idealism with practicality helps them bring their unique ideas to fruition. Creating structure around their creative process can help channel their inspiration more effectively.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Purples may withdraw completely into their inner world or become overwhelmed by emotion. They might abandon practical considerations entirely or become hypercritical of themselves and their work. Artistic expression, meditation, and nature can serve as healthy outlets during stressful periods.</p>
+            </div>
+        </section>
+
+        <!-- Black Personality Strengths & Weaknesses -->
+        <section id="black" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator black"></div>
+                <h2>Black Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Independence:</strong> Self-reliant and capable of functioning effectively without external validation or support.
+                        </li>
+                        <li>
+                            <strong>Perception:</strong> Keen observers who notice subtleties and underlying dynamics others miss.
+                        </li>
+                        <li>
+                            <strong>Depth:</strong> Capacity for deep thinking and profound understanding of complex issues.
+                        </li>
+                        <li>
+                            <strong>Authenticity:</strong> True to themselves and their values, regardless of social pressure.
+                        </li>
+                        <li>
+                            <strong>Resilience:</strong> Inner strength that allows them to withstand difficulties and maintain their course.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Isolation:</strong> May withdraw from social connection, leading to loneliness or missed opportunities.
+                        </li>
+                        <li>
+                            <strong>Cynicism:</strong> Tendency to focus on negative aspects of situations or question others' motives.
+                        </li>
+                        <li>
+                            <strong>Judgmental:</strong> Can be critical of those whose values or lifestyle choices differ from their own.
+                        </li>
+                        <li>
+                            <strong>Secretiveness:</strong> Reluctance to share personal information can create barriers in relationships.
+                        </li>
+                        <li>
+                            <strong>Intensity:</strong> Their depth and seriousness can be overwhelming or off-putting to others.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Blacks can benefit from developing greater openness to connection with others without sacrificing their independence. Learning to share more of themselves selectively can lead to deeper, more satisfying relationships. Balancing their natural skepticism with openness to positive possibilities creates a more nuanced worldview.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Blacks may withdraw completely, cutting off contact with others and becoming increasingly isolated. They might become more rigidly judgmental or cynical about others' intentions. Having trusted outlets for expression and defined periods of solitude can help them manage stress effectively.</p>
+            </div>
+        </section>
+
+        <!-- White Personality Strengths & Weaknesses -->
+        <section id="white" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator white"></div>
+                <h2>White Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Peacemaking:</strong> Natural ability to reduce tension and find harmonious resolutions to conflicts.
+                        </li>
+                        <li>
+                            <strong>Fairness:</strong> Strong sense of justice and consideration for different perspectives.
+                        </li>
+                        <li>
+                            <strong>Acceptance:</strong> Non-judgmental attitude that creates safe spaces for others.
+                        </li>
+                        <li>
+                            <strong>Patience:</strong> Willingness to let situations unfold naturally without forcing outcomes.
+                        </li>
+                        <li>
+                            <strong>Moral Clarity:</strong> Clear understanding of their values and principles that guides their actions.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Indecisiveness:</strong> May struggle to make choices when multiple options seem valid.
+                        </li>
+                        <li>
+                            <strong>Conflict Avoidance:</strong> Sometimes avoid necessary confrontations to maintain peace.
+                        </li>
+                        <li>
+                            <strong>Passivity:</strong> Can let others take control rather than asserting their own needs.
+                        </li>
+                        <li>
+                            <strong>Detachment:</strong> May emotionally distance themselves to maintain neutrality.
+                        </li>
+                        <li>
+                            <strong>Idealism:</strong> Expecting perfect harmony or justice can lead to disappointment.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Whites can benefit from developing greater comfort with healthy conflict and learning to advocate for their own needs alongside others'. Recognizing that temporary discord can lead to greater long-term harmony helps them engage more directly with problems. Setting clear personal boundaries is essential for their wellbeing.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Whites may become completely withdrawn and indecisive, or paradoxically rigid in their insistence on peace at any cost. They might suppress their own feelings to the point of losing touch with their authentic needs. Mindfulness practices and trusted confidants help them reconnect with themselves during stressful periods.</p>
+            </div>
+        </section>
+
+        <!-- Grey Personality Strengths & Weaknesses -->
+        <section id="grey" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator grey"></div>
+                <h2>Grey Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Composure:</strong> Exceptional ability to remain calm and levelheaded in chaotic or emotional situations.
+                        </li>
+                        <li>
+                            <strong>Neutrality:</strong> Balanced perspective that can see multiple sides of complex issues.
+                        </li>
+                        <li>
+                            <strong>Rationality:</strong> Logical approach to problem-solving that isn't clouded by emotional reactions.
+                        </li>
+                        <li>
+                            <strong>Self-sufficiency:</strong> Comfortable with independence and rarely demanding of others.
+                        </li>
+                        <li>
+                            <strong>Reliability:</strong> Consistent and even-tempered in their interactions and commitments.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Emotional Detachment:</strong> May come across as cold or indifferent, even when they do care.
+                        </li>
+                        <li>
+                            <strong>Indecisiveness:</strong> Can be reluctant to take sides or commit to a clear position.
+                        </li>
+                        <li>
+                            <strong>Aloofness:</strong> Tendency to keep others at arm's length emotionally.
+                        </li>
+                        <li>
+                            <strong>Lack of Passion:</strong> May seem uninspired or unexcited even about things that matter to them.
+                        </li>
+                        <li>
+                            <strong>Avoidance:</strong> Sometimes withdraw from situations that require emotional engagement.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Greys can benefit from developing greater emotional expressiveness and learning to connect more deeply with others. Recognizing the value of showing enthusiasm and investment can enrich their relationships and experiences. Taking clear positions on matters they care about helps them have more impact.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Greys may become completely withdrawn and uncommunicative, or detach entirely from emotional content in situations. They might overthink decisions to the point of paralysis. Creating space for private processing while maintaining communication with trusted others helps them manage stress effectively.</p>
+            </div>
+        </section>
+
+        <!-- Pink Personality Strengths & Weaknesses -->
+        <section id="pink" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator pink"></div>
+                <h2>Pink Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Compassion:</strong> Deep capacity for care and understanding toward others' struggles.
+                        </li>
+                        <li>
+                            <strong>Emotional Intelligence:</strong> Highly attuned to feelings and relational undercurrents.
+                        </li>
+                        <li>
+                            <strong>Nurturing:</strong> Natural ability to provide support and encouragement that helps others flourish.
+                        </li>
+                        <li>
+                            <strong>Warmth:</strong> Creates welcoming, comfortable environments where people feel valued.
+                        </li>
+                        <li>
+                            <strong>Appreciation:</strong> Notices and expresses gratitude for the beauty and goodness in life.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Overly Trusting:</strong> May be naive about others' intentions or capabilities.
+                        </li>
+                        <li>
+                            <strong>People-Pleasing:</strong> Sometimes prioritize others' happiness at the expense of their own needs.
+                        </li>
+                        <li>
+                            <strong>Emotional Dependency:</strong> Can become too reliant on others for validation and support.
+                        </li>
+                        <li>
+                            <strong>Conflict Avoidance:</strong> Strong discomfort with disagreement can prevent necessary confrontations.
+                        </li>
+                        <li>
+                            <strong>Oversentimentality:</strong> May make decisions based on emotional attachment rather than practicality.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Pinks can benefit from developing stronger boundaries and learning to prioritize their own wellbeing alongside others'. Building resilience against criticism and disappointment helps them maintain their compassionate nature without being overwhelmed. Balancing emotional considerations with practical assessment creates more sustainable caring.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Pinks may become emotionally overwhelmed, take on others' problems excessively, or retreat into fantasy or sentimentality. They might seek constant reassurance or become passive-aggressive when their needs aren't met. Self-care practices and healthy boundaries are essential stress management tools.</p>
+            </div>
+        </section>
+
+        <!-- Chocolate Personality Strengths & Weaknesses -->
+        <section id="chocolate" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator chocolate"></div>
+                <h2>Chocolate Personality: Strengths & Weaknesses</h2>
+            </div>
+            
+            <div class="strength-weakness-container">
+                <div class="strength-section">
+                    <h3 class="section-title">Key Strengths</h3>
+                    <ul class="strength-list">
+                        <li>
+                            <strong>Dedication:</strong> Unwavering commitment to their responsibilities and the people who depend on them.
+                        </li>
+                        <li>
+                            <strong>Reliability:</strong> Consistently follow through on promises and can be counted on in any situation.
+                        </li>
+                        <li>
+                            <strong>Practical Wisdom:</strong> Grounded understanding of how the world works and what truly matters.
+                        </li>
+                        <li>
+                            <strong>Resourcefulness:</strong> Ability to make the most of available resources and find practical solutions.
+                        </li>
+                        <li>
+                            <strong>Perseverance:</strong> Stick with difficult tasks and challenges long after others would have given up.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="weakness-section">
+                    <h3 class="section-title">Potential Weaknesses</h3>
+                    <ul class="weakness-list">
+                        <li>
+                            <strong>Inflexibility:</strong> Strong resistance to change or new ways of doing things.
+                        </li>
+                        <li>
+                            <strong>Stubbornness:</strong> Can be difficult to persuade even when their position isn't serving them well.
+                        </li>
+                        <li>
+                            <strong>Pessimism:</strong> Tendency to anticipate problems and focus on what might go wrong.
+                        </li>
+                        <li>
+                            <strong>Workaholic Tendencies:</strong> May prioritize productivity at the expense of enjoyment and relationships.
+                        </li>
+                        <li>
+                            <strong>Judgmental:</strong> Can be critical of those who don't share their strong work ethic or values.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="growth-stress-container">
+                <h3 class="section-title">Growth Opportunities</h3>
+                <p>Chocolates can benefit from developing greater openness to new experiences and approaches. Learning to appreciate spontaneity and joy as valuable counterpoints to duty and responsibility creates a more balanced life. Practicing flexibility with non-essential matters helps them adapt to changing circumstances more easily.</p>
+                
+                <h3 class="section-title">Under Stress</h3>
+                <p>When under pressure, Chocolates may become rigidly controlling, pessimistic, or overly focused on rules and traditions. They might refuse help and take on excessive burdens, or become harshly critical of themselves and others. Creating balance between work and rest, and accepting appropriate support from others, helps them manage stress effectively.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <footer class="footer">
+        <p>&copy; 2025 EduPersona. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Back to Top Button Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

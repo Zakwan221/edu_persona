@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Descriptions - Edu Persona</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* Enhanced styling for description page */
+        .description-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .personality-section {
+            margin-bottom: 2.5rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .color-heading {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .color-heading .color-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+        
+        /* Fix for color indicators */
+        .color-indicator.red { background-color: #e74c3c; }
+        .color-indicator.blue { background-color: #3498db; }
+        .color-indicator.green { background-color: #2ecc71; }
+        .color-indicator.yellow { background-color: #f1c40f; }
+        .color-indicator.purple { background-color: #9b59b6; }
+        .color-indicator.black { background-color: #2c3e50; }
+        .color-indicator.white { 
+            background-color: #ffffff; 
+            border: 2px solid #e0e0e0;
+        }
+        .color-indicator.grey { background-color: #7f8c8d; }
+        .color-indicator.pink { background-color: #e84393; }
+        .color-indicator.chocolate { background-color: #8b4513; }
+        
+        .color-heading h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+        
+        /* Styled subpage nav to match other pages */
+        .subpage-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .subpage-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .subpage-link:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .subpage-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Info header styling */
+        .info-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Content sections */
+        .content-section {
+            padding: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Career and Hobbies sections */
+        .career-section,
+        .hobbies-section {
+            margin-top: 1.2rem;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+        
+        .career-section {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .hobbies-section {
+            border-left: 4px solid var(--success-color);
+            margin-top: 1.5rem;
+        }
+        
+        .salary-range {
+            display: inline-block;
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        .career-list,
+        .hobbies-list {
+            list-style: none;
+            padding-left: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .career-list li,
+        .hobbies-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .career-list li:before {
+            content: "🔹";
+            position: absolute;
+            left: 0;
+        }
+        
+        .hobbies-list li:before {
+            content: "🔸";
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Personality navigation */
+        .personality-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .personality-nav-item {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .personality-nav-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .personality-nav-item .mini-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        /* Color indicators for nav */
+        .red .mini-indicator { background-color: #e74c3c; }
+        .blue .mini-indicator { background-color: #3498db; }
+        .green .mini-indicator { background-color: #2ecc71; }
+        .yellow .mini-indicator { background-color: #f1c40f; }
+        .purple .mini-indicator { background-color: #9b59b6; }
+        .black .mini-indicator { background-color: #2c3e50; }
+        .white .mini-indicator { background-color: #ffffff; border: 1px solid #dddddd; }
+        .grey .mini-indicator { background-color: #7f8c8d; }
+        .pink .mini-indicator { background-color: #e84393; }
+        .chocolate .mini-indicator { background-color: #8b4513; }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .personality-nav {
+                padding: 0 0.5rem;
+            }
+            
+            .color-heading h2 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="welcome.html" class="nav-link active">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main class="description-container">
+        <section class="info-header">
+            <h1>Complete Personality Descriptions</h1>
+            <p>Comprehensive information about all ten color personality types</p>
+            
+            <div class="subpage-nav">
+                <a href="info.html" class="subpage-link">Overview</a>
+                <a href="description.html" class="subpage-link active">Full Descriptions</a>
+                <a href="weakandstrength.html" class="subpage-link">Strengths & Weaknesses</a>
+                <a href="friend.html" class="subpage-link">Friendship Compatibility</a>
+                <a href="lovematch.html" class="subpage-link">Love Match</a>
+            </div>
+        </section>
+        
+        <!-- Color Quick Navigation -->
+        <div class="personality-nav">
+            <a href="#red" class="personality-nav-item red"><span class="mini-indicator"></span>Red</a>
+            <a href="#blue" class="personality-nav-item blue"><span class="mini-indicator"></span>Blue</a>
+            <a href="#green" class="personality-nav-item green"><span class="mini-indicator"></span>Green</a>
+            <a href="#yellow" class="personality-nav-item yellow"><span class="mini-indicator"></span>Yellow</a>
+            <a href="#purple" class="personality-nav-item purple"><span class="mini-indicator"></span>Purple</a>
+            <a href="#black" class="personality-nav-item black"><span class="mini-indicator"></span>Black</a>
+            <a href="#white" class="personality-nav-item white"><span class="mini-indicator"></span>White</a>
+            <a href="#grey" class="personality-nav-item grey"><span class="mini-indicator"></span>Grey</a>
+            <a href="#pink" class="personality-nav-item pink"><span class="mini-indicator"></span>Pink</a>
+            <a href="#chocolate" class="personality-nav-item chocolate"><span class="mini-indicator"></span>Chocolate</a>
+        </div>
+
+        <!-- Red Personality -->
+        <section id="red" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator red"></div>
+                <h2>Red Personality - Passionate & Bold</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Red personality type is characterized by strength, determination, and leadership. Reds are natural-born leaders with a drive for power and achievement. They are decisive, proactive, and willful, always ready to take action and overcome challenges. They approach life with confidence and assertiveness, often becoming the catalysts for change in their environments.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Reds are motivated by power, competition, and the need to win. They have a strong desire to be in control and to influence others. Their approach to life is direct, forthright, and sometimes forceful. Reds tend to be goal-oriented, focusing on the end result rather than the process. They value efficiency, results, and recognition for their achievements.</p>
+                <p>The inner world of a Red personality is characterized by a constant drive for improvement and achievement. They often set high standards for themselves and others, and are internally motivated by challenges that test their abilities and determination. Reds typically have a clear vision of what they want and the confidence to pursue it with unwavering focus.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Reds thrive on challenges and competition. They are highly ambitious and always aim to be the best in whatever they pursue. Their strong personality means they rarely back down from confrontation and will often stand their ground firmly in disputes. This confidence can sometimes come across as arrogance or stubbornness.</p>
+                <p>In decision making, Reds sometimes act before thinking things through completely, which can lead to conflicts with others. They're natural risk-takers who aren't afraid to venture into unknown territory if they believe it will lead to success or advancement. This bold approach to life makes them excellent pioneers and entrepreneurs.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Reds communicate in a straightforward, no-nonsense manner. They are direct, assertive, and sometimes blunt. They value clarity and brevity, preferring to get to the point quickly without unnecessary elaboration. Reds often speak with confidence and authority, using commanding language and decisive tones. Their communication is action-oriented, often focused on what needs to be done and how to accomplish goals.</p>
+                <p>In conversations, Reds may dominate discussions and can be impatient with tangents or what they perceive as inefficient communication. They appreciate others who can match their directness and provide clear, concise information. When giving feedback, Reds tend to be candid and unfiltered, valuing honesty over tact.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Red personalities excel in careers that allow them to lead, compete, and achieve tangible results. Their natural leadership abilities and decisive nature make them well-suited for roles that involve authority, strategy, and driving outcomes.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Executive Leadership</strong> (CEO, COO, Director) - Reds thrive at the top of organizations where they can set direction and drive results.
+                            <div class="salary-range">$120,000 - $500,000+</div>
+                        </li>
+                        <li>
+                            <strong>Entrepreneurship</strong> - Starting and growing businesses allows Reds to set their own rules and directly benefit from their drive and determination.
+                            <div class="salary-range">Variable, potentially unlimited</div>
+                        </li>
+                        <li>
+                            <strong>Sales Management</strong> - Roles that combine competition, leadership, and measurable results are perfect for Reds.
+                            <div class="salary-range">$80,000 - $200,000+</div>
+                        </li>
+                        <li>
+                            <strong>Emergency Services</strong> (Fire Chief, Police Captain) - These roles reward quick decision-making and authoritative leadership in high-pressure situations.
+                            <div class="salary-range">$75,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Military Officer</strong> - The structure, clear hierarchy, and mission-focused nature of military leadership plays to Red strengths.
+                            <div class="salary-range">$50,000 - $150,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Red personalities are drawn to activities that allow them to compete, achieve goals, and exercise their leadership abilities. Their hobbies often involve physical challenge, measurable progress, or opportunities to win.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Competitive Sports</strong> - Reds love the thrill of competition and the clear objective of winning. They're often drawn to sports like tennis, martial arts, or football where individual performance directly impacts outcomes.
+                        </li>
+                        <li>
+                            <strong>Adventure Activities</strong> - Skydiving, rock climbing, and other high-adrenaline activities appeal to Reds because they provide an opportunity to push limits and overcome fear.
+                        </li>
+                        <li>
+                            <strong>Strategic Gaming</strong> - Games that involve strategy, competition, and clear winners (like chess, poker, or competitive video games) satisfy their need for mental challenge and victory.
+                        </li>
+                        <li>
+                            <strong>Physical Training</strong> - Weight lifting, CrossFit, or marathon training appeals to Reds because they can set concrete goals, see measurable progress, and constantly push themselves to new achievements.
+                        </li>
+                        <li>
+                            <strong>Leadership Roles in Communities</strong> - Running for local office, leading community organizations, or coaching sports teams allows Reds to exercise their leadership abilities while making a tangible impact.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Red at Their Best</h3>
+                <p>At their best, Reds are courageous, determined, and inspiring leaders. They have the ability to rally others around a common goal and drive projects to successful completion. They are innovative, productive, and willing to take necessary risks to achieve greatness. Their confidence and clarity of purpose can be infectious, motivating teams to accomplish what might have seemed impossible.</p>
+                <p>Mature Reds have learned to balance their natural assertiveness with empathy and consideration for others. They use their strength to protect and empower those around them, creating environments where everyone can succeed. At their best, Reds channel their immense energy and drive into causes larger than themselves, creating lasting positive change in their organizations and communities.</p>
+            </div>
+        </section>
+
+        <!-- Blue Personality -->
+        <section id="blue" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator blue"></div>
+                <h2>Blue Personality - Loyal & Intelligent</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Blue personality type is characterized by analytical thinking, precision, and a methodical approach to life. Blues are deep thinkers who value knowledge, accuracy, and intellectual clarity. They strive for perfection and have a strong desire to understand the world around them. Their approach is systematic and thorough, often making them the problem-solvers and quality controllers in any group.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Blues are motivated by knowledge, understanding, and the need for order. They have a strong desire for clarity and logical explanations. Their approach to life is thoughtful, careful, and sometimes cautious. Blues tend to be detail-oriented, focusing on precision and accuracy in all they do. They value expertise, competence, and intellectual integrity above almost everything else.</p>
+                <p>The inner world of a Blue personality is rich with analysis, contemplation, and the pursuit of understanding. They often have elaborate mental frameworks for organizing information and seeking patterns. Blues are internally driven by questions and a desire to make sense of complexity. They typically maintain high standards for themselves, particularly regarding accuracy and thoroughness of thought.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Blues prefer logic over emotions when making decisions. They analyze situations carefully, looking for the most rational course of action rather than being swayed by feelings. This can sometimes make them appear detached or cold, but they simply value clarity and reason.</p>
+                <p>Loyalty is a defining trait of Blue personalities. Once they commit to a relationship or cause, they remain steadfast and dependable. Blues are highly trustworthy and keep their promises, making them reliable friends and colleagues. They actively avoid emotional drama and foolish risks, preferring stability and certainty in their lives.</p>
+                <p>Blues have a natural inclination toward learning and intellectual pursuits. They enjoy researching topics deeply, mastering new skills, and engaging in thoughtful conversations about complex subjects. This intellectual curiosity drives them to continually expand their knowledge and understanding.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Blues communicate in a clear, logical, and precise manner. They value accurate information and factual evidence. Blues prefer communication that is organized, well-thought-out, and free from emotional bias. They may sometimes come across as detached or distant, as they prioritize objectivity over emotional expression. Their speech tends to be measured and deliberate, with carefully chosen words.</p>
+                <p>In discussions, Blues ask probing questions and appreciate detailed, thorough answers. They may appear skeptical, but this stems from their desire to verify information rather than from distrust. Blues tend to listen carefully and process information thoroughly before responding. They excel at identifying inconsistencies in arguments and appreciate when others recognize the precision of their own thinking.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Blue personalities excel in careers that require analytical thinking, precision, and attention to detail. Their methodical approach and desire for accuracy make them well-suited for roles involving analysis, research, and complex problem-solving.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Data Science & Analytics</strong> - Blues thrive when analyzing complex data sets and finding meaningful patterns.
+                            <div class="salary-range">$90,000 - $180,000</div>
+                        </li>
+                        <li>
+                            <strong>Engineering</strong> (Software, Mechanical, Electrical) - The precision and problem-solving nature of engineering appeals to the Blue's methodical mind.
+                            <div class="salary-range">$85,000 - $200,000</div>
+                        </li>
+                        <li>
+                            <strong>Research Scientist</strong> - The pursuit of knowledge and discovery through rigorous methodology aligns perfectly with Blue values.
+                            <div class="salary-range">$75,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Financial Analysis</strong> - Examining financial data, identifying trends, and making projections requires the Blue's analytical precision.
+                            <div class="salary-range">$70,000 - $160,000</div>
+                        </li>
+                        <li>
+                            <strong>Quality Assurance</strong> - The attention to detail and commitment to standards makes Blues excellent at ensuring quality and consistency.
+                            <div class="salary-range">$65,000 - $120,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Blue personalities are drawn to activities that engage their analytical minds, allow them to develop expertise, and satisfy their desire for intellectual stimulation. Their hobbies often involve learning, problem-solving, or the pursuit of mastery.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Strategic Games</strong> - Chess, Go, complex board games, and strategy video games appeal to Blues because they involve logical thinking, planning, and the opportunity to improve through analysis.
+                        </li>
+                        <li>
+                            <strong>Reading and Research</strong> - Blues often enjoy deep dives into subjects that interest them, accumulating knowledge and understanding complex topics through books, academic journals, and online resources.
+                        </li>
+                        <li>
+                            <strong>Programming and Tech Projects</strong> - Creating software, building databases, or working on technical projects allows Blues to exercise their logical thinking and problem-solving abilities.
+                        </li>
+                        <li>
+                            <strong>Collecting and Cataloging</strong> - Many Blues enjoy collecting items (books, stamps, records, etc.) and organizing them according to systematic criteria, satisfying their need for order and categorization.
+                        </li>
+                        <li>
+                            <strong>Musical Instruments</strong> - The combination of technical skill, pattern recognition, and potential for continual improvement makes learning and mastering musical instruments appealing to Blues.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Blue at Their Best</h3>
+                <p>At their best, Blues are insightful, objective, and innovative problem-solvers. They have the ability to see patterns and connections that others miss, and to develop comprehensive solutions to complex challenges. They are reliable, thorough, and committed to excellence in all they do. Their analytical capabilities can lead to breakthroughs and innovations that might not be possible without their rigorous, methodical approach.</p>
+                <p>Mature Blues have learned to integrate their analytical strengths with emotional intelligence and practical considerations. They understand when precision is crucial and when approximation is sufficient. At their best, Blues use their intellectual gifts not just for their own satisfaction, but to contribute meaningfully to their communities and fields, advancing knowledge and improving systems for everyone's benefit.</p>
+            </div>
+        </section>
+
+        <!-- Green Personality -->
+        <section id="green" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator green"></div>
+                <h2>Green Personality - Balanced & Practical</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Green personality type is characterized by balance, stability, and a practical approach to life. Greens are dependable individuals who value tradition, consistency, and peaceful living. They're the steady foundation in any group, providing reliability and common sense that keeps projects and relationships grounded. While not typically seeking the spotlight, Greens are the backbone of many successful organizations and communities.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Greens are motivated by security, stability, and the desire for harmonious relationships. They have a strong appreciation for tradition and established methods that have proven effective over time. Their approach to life is steady, methodical, and patient. Greens tend to be practical and realistic, focusing on what's tangible and applicable in the present moment rather than abstract theories or distant possibilities.</p>
+                <p>The inner world of a Green personality is characterized by a desire for consistency and predictability. They find comfort in routines and established systems, often developing detailed internal frameworks for how things should work. Greens typically have a strong moral compass and clear values that guide their decisions and behaviors, giving them a steady sense of purpose and direction.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Greens strongly prefer stability over excitement. They find comfort in routines and established patterns, often becoming anxious when faced with sudden or significant changes. This preference for stability extends to all areas of their lives, from their careers to their personal relationships.</p>
+                <p>As decision-makers, Greens are careful and methodical. They avoid impulsive choices, preferring to think through all options and potential consequences before committing to a course of action. This deliberate approach might sometimes appear as hesitation, but it's actually a thoughtful process that helps them avoid unnecessary risks.</p>
+                <p>Greens have a strong sense of duty and responsibility. They value hard work and consistency, approaching their commitments with dedication and perseverance. This makes them highly reliable team members and partners. Their natural inclination toward peace leads them to often adopt the role of peacemaker in groups, helping to resolve conflicts and restore harmony.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Greens communicate in a calm, straightforward manner. They are tactful, diplomatic, and considerate of others' feelings. Greens prefer communication that is clear, practical, and focused on concrete matters rather than abstract concepts or hypotheticals. They value honesty and reliability in communication, appreciating when others say what they mean and mean what they say.</p>
+                <p>In conversations, Greens are typically good listeners who take time to process information before responding. They speak deliberately and thoughtfully, often bringing discussions back to practical considerations when conversations become too theoretical. Greens express themselves best when they've had time to gather their thoughts and may struggle with being put on the spot or pressured to provide immediate responses.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Green personalities excel in careers that require reliability, practical thinking, and attention to established processes. Their steady nature and preference for stability make them well-suited for roles involving implementation, maintenance, and consistent service delivery.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Healthcare Administration</strong> - The combination of consistent processes and helping others appeals to Greens' practical and supportive nature.
+                            <div class="salary-range">$70,000 - $130,000</div>
+                        </li>
+                        <li>
+                            <strong>Accounting & Financial Planning</strong> - Working with established systems and helping clients achieve financial stability fits well with Green values.
+                            <div class="salary-range">$65,000 - $120,000</div>
+                        </li>
+                        <li>
+                            <strong>Education</strong> (Teaching, Administration) - The combination of structure, tradition, and nurturing others makes education a natural fit for many Greens.
+                            <div class="salary-range">$45,000 - $100,000</div>
+                        </li>
+                        <li>
+                            <strong>Project Management</strong> - Overseeing processes, maintaining schedules, and ensuring reliable execution plays to Green strengths.
+                            <div class="salary-range">$75,000 - $140,000</div>
+                        </li>
+                        <li>
+                            <strong>Skilled Trades</strong> (Electrician, Carpenter, Plumber) - Working with tangible materials to create practical solutions is deeply satisfying for Greens.
+                            <div class="salary-range">$50,000 - $100,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Green personalities are drawn to activities that provide stability, practical benefits, and opportunities to create or maintain order. Their hobbies often involve tangible results, traditional skills, or contributions to their community.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Gardening & Landscaping</strong> - Greens enjoy the predictable rhythms of nature, the satisfaction of nurturing growth, and the tangible results of their efforts in creating beautiful, ordered spaces.
+                        </li>
+                        <li>
+                            <strong>Home Improvement</strong> - Projects that enhance their living space, increase functionality, and require practical skills appeal to Greens' desire to create tangible value.
+                        </li>
+                        <li>
+                            <strong>Cooking & Baking</strong> - The combination of following established recipes, practical creativity, and providing for others makes culinary activities especially appealing to Greens.
+                        </li>
+                        <li>
+                            <strong>Community Service</strong> - Volunteer work with established organizations allows Greens to make a practical difference while connecting with their community in structured, meaningful ways.
+                        </li>
+                        <li>
+                            <strong>Traditional Crafts</strong> - Activities like woodworking, knitting, quilting, or pottery appeal to Greens because they involve learning established techniques, creating useful items, and connecting with traditions.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Green at Their Best</h3>
+                <p>At their best, Greens are reliable, grounded, and deeply supportive individuals. They have the ability to maintain stability during turbulent times and to implement practical solutions to everyday challenges. They are patient, consistent, and committed to their responsibilities. Their practical wisdom and common sense can help teams avoid pitfalls and stay focused on achievable goals.</p>
+                <p>Mature Greens have developed flexibility alongside their natural stability, allowing them to adapt to necessary changes while maintaining core values. They use their natural patience and steadiness to provide support for others during times of change or stress. At their best, Greens create environments of safety and reliability where everyone can thrive, quietly strengthening their families, workplaces, and communities through their dependable presence and practical contributions.</p>
+            </div>
+        </section>
+
+        <!-- Yellow Personality -->
+        <section id="yellow" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator yellow"></div>
+                <h2>Yellow Personality - Optimistic & Cheerful</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Yellow personality type is characterized by enthusiasm, optimism, and sociability. Yellows are natural entertainers who value fun, spontaneity, and positive energy. They strive to enjoy life to the fullest and inspire others to do the same. Their vibrant presence brings energy and excitement to any situation, making them the catalysts for joy and connection in their social circles.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Yellows are motivated by enjoyment, connection, and the need for variety and stimulation. They have a strong desire to experience life fully and create positive memories with others. Their approach to life is playful, energetic, and sometimes impulsive. Yellows tend to be experience-oriented, focusing on the joy and excitement in each moment rather than long-term plans or serious contemplation.</p>
+                <p>The inner world of a Yellow personality is filled with creativity, possibilities, and a genuine enthusiasm for life's adventures. They often have a rich imagination and a natural ability to see the positive aspects of any situation. Yellows are internally driven by a desire to connect, experience, and bring happiness to themselves and others. They typically have a youthful energy and curiosity that persists throughout their lives.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Yellows consistently look for the bright side of life, maintaining an optimistic outlook even in challenging situations. This positive perspective helps them bounce back quickly from setbacks and find silver linings where others might see only problems. Their natural optimism makes them resilient and adaptive.</p>
+                <p>Highly social by nature, Yellows thrive on human connection. They love making people laugh and creating enjoyable experiences for those around them. Yellows are often the life of the party, using their natural charisma and sense of humor to lift spirits and create memorable moments.</p>
+                <p>Yellows enjoy spontaneity and often dislike strict routines or rigid schedules. They prefer to keep their options open, allowing room for unexpected adventures and opportunities. This free-spirited approach contributes to their charm but can sometimes make it challenging for them to stick with long-term commitments or structured plans.</p>
+                <p>With their childlike curiosity and playful nature, Yellows approach life as an adventure to be experienced fully. They maintain a sense of wonder about the world that others might lose with age. This curiosity drives them to explore new places, try new activities, and meet new people with enthusiasm and openness.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Yellows communicate in an animated, expressive, and enthusiastic manner. They are natural storytellers who use vivid language, humor, and emotional expressiveness to connect with others. Yellows value light-hearted, positive interactions and tend to avoid heavy or negative topics. They may sometimes dominate conversations with their energy and expressiveness, though their intention is usually to entertain and engage rather than to control.</p>
+                <p>In social settings, Yellows are often the ones keeping conversations lively and inclusive. They excel at breaking the ice, making introductions, and finding common ground between diverse individuals. Yellows may struggle with deep, serious discussions or conflicts, preferring to lighten the mood or change the subject when conversations become too intense or negative.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Yellow personalities excel in careers that allow them to express their enthusiasm, connect with others, and maintain variety in their day-to-day activities. Their natural sociability and creativity make them well-suited for roles involving communication, entertainment, and innovative thinking.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Marketing & Public Relations</strong> - Yellows thrive when they can use their creativity and people skills to generate excitement about products or causes.
+                            <div class="salary-range">$60,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Event Planning</strong> - Creating memorable experiences that bring people together perfectly aligns with Yellow values and strengths.
+                            <div class="salary-range">$45,000 - $120,000</div>
+                        </li>
+                        <li>
+                            <strong>Sales</strong> - The combination of social interaction, performance aspects, and variety makes sales an excellent fit for many Yellows.
+                            <div class="salary-range">$40,000 - $200,000+</div>
+                        </li>
+                        <li>
+                            <strong>Entertainment Industry</strong> (Performer, Host, Producer) - These roles allow Yellows to shine through their natural charisma and creative expression.
+                            <div class="salary-range">Variable, $30,000 - $1,000,000+</div>
+                        </li>
+                        <li>
+                            <strong>Teaching</strong> (particularly early education or arts) - Engaging with students through creative, interactive methods makes teaching rewarding for many Yellows.
+                            <div class="salary-range">$40,000 - $85,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Yellow personalities are drawn to activities that involve social interaction, creative expression, and new experiences. Their hobbies often include elements of performance, spontaneity, or shared enjoyment with others.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Performing Arts</strong> - Acting, singing, dancing, or improv comedy allows Yellows to express themselves creatively while connecting with audiences and fellow performers.
+                        </li>
+                        <li>
+                            <strong>Social Sports & Games</strong> - Team sports, beach volleyball, or group games that emphasize fun and interaction over intense competition appeal to Yellows' social nature.
+                        </li>
+                        <li>
+                            <strong>Travel & Adventure</strong> - Experiencing new places, cultures, and activities satisfies Yellows' desire for novelty, stories to tell, and memorable moments to share.
+                        </li>
+                        <li>
+                            <strong>Party Planning & Hosting</strong> - Creating gatherings that bring people together for celebration allows Yellows to exercise their creativity while facilitating joy and connection.
+                        </li>
+                        <li>
+                            <strong>Social Media Content Creation</strong> - Platforms that allow Yellows to share their experiences, humor, and creative expression with a wider audience are particularly appealing.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Yellow at Their Best</h3>
+                <p>At their best, Yellows are charismatic, inspiring, and genuinely joyful individuals. They have the ability to lift spirits, generate enthusiasm for projects, and create positive social connections. They are creative, spontaneous, and bring much-needed fun and lightness to any group or situation. Their authentic enthusiasm can catalyze action and inspire others to embrace life more fully.</p>
+                <p>Mature Yellows have learned to balance their natural spontaneity with appropriate follow-through and responsibility. They understand when to be the life of the party and when to listen and support. At their best, Yellows use their remarkable gifts for connection and positivity not just for personal enjoyment, but to create meaningful bonds between people and to help others find joy even in difficult circumstances.</p>
+            </div>
+        </section>
+
+        <!-- Purple Personality -->
+        <section id="purple" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator purple"></div>
+                <h2>Purple Personality - Creative & Unique</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Purple personality type is characterized by creativity, intuition, and depth of perception. Purples are visionaries who value meaning, authenticity, and personal expression. They have a natural ability to see beyond the surface, identifying patterns and possibilities that others miss. Their unique perspective often leads to innovative ideas and profound insights that can transform how others view the world.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Purples are motivated by meaning, purpose, and the desire for personal and spiritual growth. They have a strong need for authenticity and self-expression. Their approach to life is introspective, imaginative, and often idealistic. Purples tend to be values-driven, focusing on what matters deeply rather than on superficial concerns or conventional measures of success.</p>
+                <p>The inner world of a Purple personality is rich and complex, filled with ideas, symbols, and deep emotional currents. They often experience life more intensely than others, finding profound meaning in experiences that might seem ordinary to different personality types. Purples typically have a strong connection to their intuition and may receive insights through dreams, meditation, or creative processes.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Purples possess highly imaginative and artistic dispositions. They naturally think outside conventional boundaries, approaching problems and situations with creative solutions that others might not consider. This innovative thinking makes them valuable in fields requiring originality and fresh perspectives.</p>
+                <p>Purples can sometimes appear moody or distant, as they often become absorbed in their deep thoughts and inner creative processes. This inward focus isn't antisocial but rather reflects their need to process experiences on a deeper level than most. This contemplative nature contributes to their unique insights and creative output.</p>
+                <p>They value emotional depth and intellectual conversations that explore meaningful topics. Small talk and superficial interactions often feel draining to Purples, who prefer discussions about philosophy, psychology, the human condition, and other subjects with depth and significance. Their desire for authenticity extends to all their relationships and pursuits.</p>
+                <p>Purples may seem mysterious or unpredictable to others, as they follow their own internal compass rather than conforming to social expectations. This independent spirit, combined with their unique perspective, often leads them to unusual interests, unconventional career paths, or innovative approaches to life's challenges.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Purples communicate in a thoughtful, nuanced manner that often includes metaphors, analogies, and references to deeper meanings. They value authentic expression and conversations that go beyond small talk to explore ideas, feelings, and possibilities. Purples may sometimes struggle to articulate their complex thoughts and intuitions in ways that more literal-minded people can easily understand.</p>
+                <p>In discussions, Purples tend to look for the deeper implications or meanings behind what's being said. They are usually good listeners who pay attention to both words and unspoken emotional content. Purples often ask probing questions that can shift conversations to more meaningful levels. They typically dislike superficial, purely factual exchanges and may disengage when conversations feel inauthentic or overly conventional.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Purple personalities excel in careers that allow them to express their creativity, explore meaningful concepts, and bring new perspectives to problems. Their visionary nature and intuitive insights make them well-suited for roles involving innovation, artistic expression, and human understanding.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Creative Arts</strong> (Writer, Designer, Filmmaker) - These fields provide outlets for Purple's natural creativity and desire for meaningful expression.
+                            <div class="salary-range">$40,000 - $150,000+</div>
+                        </li>
+                        <li>
+                            <strong>Counseling & Psychology</strong> - Understanding human complexity and helping others navigate their inner worlds aligns with Purple values.
+                            <div class="salary-range">$60,000 - $130,000</div>
+                        </li>
+                        <li>
+                            <strong>Innovation & Product Development</strong> - Creating new concepts and products allows Purples to transform their visions into reality.
+                            <div class="salary-range">$70,000 - $180,000</div>
+                        </li>
+                        <li>
+                            <strong>Higher Education</strong> (especially humanities, arts) - Teaching subjects that explore human experience and meaning satisfies Purples' intellectual and spiritual interests.
+                            <div class="salary-range">$60,000 - $120,000</div>
+                        </li>
+                        <li>
+                            <strong>Alternative Health & Wellness</strong> - Holistic approaches to wellbeing allow Purples to integrate physical, emotional, and spiritual dimensions.
+                            <div class="salary-range">$40,000 - $100,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Purple personalities are drawn to activities that engage their creativity, deepen self-understanding, and explore meaningful dimensions of life. Their hobbies often have elements of self-expression, symbolic significance, or spiritual connection.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Creative Writing</strong> - Poetry, fiction, or journaling provides Purples with outlets to express their complex inner worlds and explore meaningful themes through language.
+                        </li>
+                        <li>
+                            <strong>Meditation & Spiritual Practices</strong> - Activities that deepen self-awareness and spiritual connection help Purples integrate their intuitive insights and find inner harmony.
+                        </li>
+                        <li>
+                            <strong>Visual Arts</strong> - Painting, photography, or sculpture allows Purples to express concepts and emotions that might be difficult to communicate through words alone.
+                        </li>
+                        <li>
+                            <strong>Music Appreciation & Creation</strong> - The emotional depth and symbolic richness of music resonates with Purples' sensitivity and provides both inspiration and expression.
+                        </li>
+                        <li>
+                            <strong>Philosophical Discussion</strong> - Exploring big questions about meaning, consciousness, and purpose with like-minded individuals satisfies Purples' need for depth and connection.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Purple at Their Best</h3>
+                <p>At their best, Purples are insightful, compassionate, and inspirational individuals. They have the ability to see beauty and meaning where others might not, and to envision possibilities that can transform situations for the better. They bring depth, authenticity, and creative vitality to their relationships and work. Their unique perspective can help others connect with what truly matters beyond superficial concerns.</p>
+                <p>Mature Purples have learned to balance their idealism with practical considerations and to communicate their insights in ways others can understand and apply. They use their sensitivity and intuition not just for personal exploration but to foster greater understanding and meaning in their communities. At their best, Purples help others see the deeper patterns and possibilities in life, inspiring more authentic and meaningful ways of living and working together.</p>
+            </div>
+        </section>
+
+        <!-- Black Personality -->
+        <section id="black" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator black"></div>
+                <h2>Black Personality - Independent & Mysterious</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Black personality type is characterized by independence, depth, and a strong internal compass. Blacks are autonomous thinkers who value authenticity, truth, and intellectual integrity. They tend to be selective about their relationships and commitments, preferring fewer but deeper connections. Their independent perspective often brings valuable insights that challenge conventional thinking and expand possibilities.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Blacks are motivated by autonomy, understanding, and the desire for authenticity. They have a strong need for independence and self-determination. Their approach to life is introspective, questioning, and often skeptical of mainstream opinions or values. Blacks tend to be principle-driven, making decisions based on their carefully considered personal values rather than social expectations or conventional wisdom.</p>
+                <p>The inner world of a Black personality is rich with analysis, contemplation, and a continual pursuit of deeper truths. They typically develop a strong internal framework of principles and beliefs, against which they measure new information and experiences. Blacks place high value on intellectual integrity and tend to be uncomfortable with inconsistencies or hypocrisies, both in themselves and in society.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Blacks highly value privacy and personal space. They carefully guard their inner thoughts and feelings, sharing them selectively with those they trust deeply. This reserved nature isn't about secrecy but rather reflects their need for boundaries and authentic self-expression.</p>
+                <p>In social settings, Blacks often take on the role of observer rather than active participant. They prefer to watch and analyze social dynamics before engaging, giving them insights that more outgoing personalities might miss. This observant nature contributes to their perceptiveness about people and situations.</p>
+                <p>When Blacks do engage in conversation, they prefer deep intellectual discussions over small talk. They enjoy exploring complex topics, philosophical questions, and meaningful exchanges that challenge their thinking. Surface-level interactions often feel draining or pointless to them.</p>
+                <p>Blacks may initially come across as cold or aloof, but those who know them well understand they value deep, meaningful relationships. They invest significant thought and care into their close connections, even if they maintain a smaller social circle than other personality types.</p>
+                <p>Many Blacks appreciate dark humor, philosophy, and mystery stories that explore the depths of human experience or challenge conventional thinking. Their entertainment preferences often reflect their comfort with complexity and their interest in themes others might find too heavy or intense.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Blacks communicate in a thoughtful, direct manner that prioritizes honesty over social niceties. They value substantive content over small talk and may seem reserved or aloof in social situations that feel superficial. Blacks tend to be selective about sharing their thoughts and feelings, opening up more fully with the few people they deeply trust.</p>
+                <p>In discussions, Blacks often ask penetrating questions that cut to the heart of matters. They are willing to challenge assumptions and explore taboo or controversial topics if they believe it serves the pursuit of truth. Blacks typically prefer one-on-one conversations to group discussions and may withdraw if conversations become too superficial or conformist. They communicate most freely when they feel their independence and authenticity are respected.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Black personalities excel in careers that allow them to work independently, explore complex questions, and maintain their intellectual integrity. Their capacity for deep analysis and willingness to challenge conventional thinking make them well-suited for roles requiring original perspectives and principled approaches.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Research & Academia</strong> - The opportunity to pursue truth and develop original insights in a relatively autonomous environment appeals to Black's independent nature.
+                            <div class="salary-range">$60,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Philosophy & Law</strong> - Fields that involve examining fundamental principles and applying critical thinking allow Blacks to utilize their analytical strengths.
+                            <div class="salary-range">$70,000 - $200,000+</div>
+                        </li>
+                        <li>
+                            <strong>Information Security</strong> - The combination of technical expertise, critical thinking, and skepticism makes cybersecurity a natural fit for many Blacks.
+                            <div class="salary-range">$80,000 - $170,000</div>
+                        </li>
+                        <li>
+                            <strong>Independent Consulting</strong> - Working autonomously to provide expert analysis and unconventional perspectives aligns with Black's preferred working style.
+                            <div class="salary-range">$70,000 - $250,000+</div>
+                        </li>
+                        <li>
+                            <strong>Investigative Journalism</strong> - Uncovering hidden truths and maintaining editorial independence satisfies Black's desire for authenticity and depth.
+                            <div class="salary-range">$45,000 - $120,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Black personalities are drawn to activities that allow for independence, depth of exploration, and development of expertise. Their hobbies often involve elements of analysis, mastery, or pursuit of uncommon interests.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Independent Research</strong> - Exploring topics of personal interest through books, documentaries, or online resources allows Blacks to develop expertise and understanding outside institutional frameworks.
+                        </li>
+                        <li>
+                            <strong>Philosophical Reading & Discussion</strong> - Engaging with profound ideas through literature, philosophy, or deep conversations with trusted individuals satisfies Blacks' intellectual curiosity.
+                        </li>
+                        <li>
+                            <strong>Solo Activities</strong> - Pursuits like long-distance hiking, solo travel, or independent creative projects appeal to Blacks' self-reliant nature and desire for unmediated experiences.
+                        </li>
+                        <li>
+                            <strong>Niche Collecting</strong> - Developing specialized knowledge about uncommon subjects (rare books, historical artifacts, etc.) combines Blacks' love of expertise with their appreciation for the unconventional.
+                        </li>
+                        <li>
+                            <strong>Strategic Gaming</strong> - Complex games that reward deep analysis and independent thinking (chess, go, certain video games) provide intellectual challenge and the opportunity to develop mastery.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Black at Their Best</h3>
+                <p>At their best, Blacks are insightful, authentic, and intellectually courageous individuals. They have the ability to see through superficiality and pretense to identify deeper truths. They bring independence of thought, depth of analysis, and unwavering integrity to their endeavors. Their willingness to explore unpopular perspectives or taboo subjects can lead to important breakthroughs and necessary conversations.</p>
+                <p>Mature Blacks have learned to balance their natural independence with meaningful connection to others. They understand when to stand firm on principles and when flexibility serves a higher purpose. At their best, Blacks use their intellectual gifts not just for personal understanding but to contribute valuable perspectives that help others see beyond conventional limitations, encouraging greater authenticity and depth in their communities.</p>
+            </div>
+        </section>
+
+        <!-- White Personality -->
+        <section id="white" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator white"></div>
+                <h2>White Personality - Peaceful & Pure</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The White personality type is characterized by peace, harmony, and a balanced approach to life. Whites are natural mediators who value fairness, objectivity, and tranquility. They have a unique ability to see multiple perspectives and find common ground in conflicting situations. Their calm presence often brings serenity to chaotic environments, making them valuable stabilizing influences.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Whites are motivated by harmony, fairness, and the desire for inner and outer peace. They have a strong need for balance and equilibrium in all aspects of life. Their approach is gentle, thoughtful, and often philosophical. Whites tend to be reflective and contemplative, considering multiple perspectives before forming opinions or taking action. They value authenticity and moral clarity, often serving as the ethical compass in their circles.</p>
+                <p>The inner world of a White personality is characterized by a search for clarity, truth, and alignment. They often have a rich spiritual or philosophical life, whether or not this is connected to formal religious practices. Whites are internally driven by a desire to reconcile contradictions and find universal principles that can guide ethical living. They typically maintain a certain detachment that allows them to observe situations with objectivity and fairness.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Whites actively seek peace and harmony in all aspects of their lives. They work to create balanced environments where conflict is minimized and people can coexist respectfully. This desire for harmony extends to their inner world as well, where they strive for emotional and mental equilibrium.</p>
+                <p>They naturally avoid drama and dislike conflict. When disagreements arise, Whites often feel physically and emotionally uncomfortable, motivating them to find resolutions that satisfy all parties. They may sometimes avoid necessary confrontations to maintain peace, though mature Whites learn when principled stands are necessary.</p>
+                <p>Whites possess a strong moral compass that guides their decisions and actions. They value honesty, fairness, and ethical behavior above convenience or personal gain. This commitment to principle makes them trustworthy and reliable in matters of integrity.</p>
+                <p>In group settings, Whites frequently take on the role of mediator. Their ability to see multiple perspectives and remain neutral helps them bridge differences between opposing viewpoints. They excel at finding common ground and developing compromises that honor the core needs of all involved.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Whites communicate in a calm, measured, and diplomatic manner. They are thoughtful listeners who genuinely try to understand different perspectives. Whites value authenticity and honesty delivered with kindness. They tend to avoid extreme statements or inflammatory language, preferring nuanced expressions that acknowledge complexity. Their communication often includes questions and reflections rather than definitive declarations.</p>
+                <p>In discussions, Whites excel at identifying common ground and articulating compromises that honor the core needs of all parties. They may sometimes hesitate to express their own opinions strongly, particularly in contentious situations, preferring to maintain their role as mediator. Whites often need time to process information and formulate responses, especially in emotionally charged circumstances.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>White personalities excel in careers that allow them to facilitate harmony, promote fairness, and resolve conflicts. Their natural diplomatic abilities and balanced perspective make them well-suited for roles involving mediation, support, and ethical leadership.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Mediator/Conflict Resolution Specialist</strong> - The ability to see multiple perspectives and find common ground makes Whites natural mediators.
+                            <div class="salary-range">$60,000 - $120,000</div>
+                        </li>
+                        <li>
+                            <strong>Human Resources</strong> - Creating fair policies and helping resolve workplace issues aligns with White values of balance and harmony.
+                            <div class="salary-range">$55,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Counseling & Therapy</strong> - Providing a non-judgmental space for others to find their own balance plays to White strengths.
+                            <div class="salary-range">$50,000 - $100,000</div>
+                        </li>
+                        <li>
+                            <strong>Ethics Officer/Compliance</strong> - Ensuring organizational actions align with ethical principles satisfies Whites' need for moral clarity.
+                            <div class="salary-range">$75,000 - $170,000</div>
+                        </li>
+                        <li>
+                            <strong>Diplomacy & International Relations</strong> - Finding common ground between different cultures and interests draws on Whites' natural abilities.
+                            <div class="salary-range">$60,000 - $180,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>White personalities are drawn to activities that promote inner peace, harmony with nature, and balanced development. Their hobbies often involve elements of mindfulness, aesthetic appreciation, or ethical living.</p>
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Meditation & Yoga</strong> - Practices that cultivate inner calm and balance appeal to Whites' desire for harmony in body, mind, and spirit.
+                        </li>
+                        <li>
+                            <strong>Nature Activities</strong> - Hiking, gardening, or simply spending time in natural settings helps Whites connect with the underlying balance and rhythm of life.
+                        </li>
+                        <li>
+                            <strong>Artistic Appreciation</strong> - Visiting museums, attending concerts, or studying aesthetics satisfies Whites' appreciation for beauty and harmony in form.
+                        </li>
+                        <li>
+                            <strong>Philosophical Reading & Discussion</strong> - Exploring ethical frameworks and discussing life's deeper questions helps Whites develop their internal moral compass.
+                        </li>
+                        <li>
+                            <strong>Volunteer Mediation</strong> - Community involvement that allows Whites to help others find common ground and resolve conflicts in constructive ways is particularly fulfilling.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">White at Their Best</h3>
+                <p>At their best, Whites are wise, compassionate, and deeply ethical individuals. They have the ability to bring clarity to complex situations and help others find common ground in seemingly intractable conflicts. They embody the virtues of fairness, objectivity, and genuine care for the wellbeing of all. Their calm presence can transform contentious environments and facilitate meaningful reconciliation.</p>
+                <p>Mature Whites have learned to balance their natural tendency toward neutrality with the courage to take stands on important matters of principle. They understand when compromise serves the greater good and when certain values must be upheld despite opposition. At their best, Whites use their gifts for seeing multiple perspectives not to remain detached, but to help create more just, harmonious, and balanced communities where diverse individuals can flourish together.</p>
+            </div>
+        </section>
+
+        <!-- Grey Personality -->
+        <section id="grey" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator grey"></div>
+                <h2>Grey Personality - Calm & Logical</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Grey personality type is characterized by neutrality, objectivity, and emotional stability. Greys are natural observers who value clarity, independence, and rational thinking. They have a unique ability to maintain composure and level-headedness even in turbulent situations, making them reliable decision-makers and steady influences in times of chaos or emotional intensity.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Greys are motivated by clarity, stability, and the desire for objectivity. They have a strong need for emotional equilibrium and rational understanding. Their approach to life is measured, careful, and deliberate. Greys tend to be pragmatic and level-headed, focusing on facts and logic rather than emotional reactions or subjective impressions. They value independence, competence, and clear thinking above most other qualities.</p>
+                <p>The inner world of a Grey personality is characterized by order, structure, and a methodical approach to processing information and experiences. They typically maintain a certain emotional distance from situations, allowing them to analyze and respond based on reason rather than impulse. Greys are internally driven by a desire for clarity and understanding, seeking to make sense of complex situations through careful consideration and logical analysis.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Greys prefer neutrality and actively avoid drama and emotional extremes. They maintain an even temperament in situations where others might become agitated or overly excited. This steadiness makes them valuable team members during crises or high-pressure situations.</p>
+                <p>Thinking logically is a hallmark of the Grey personality. They approach decisions methodically, weighing evidence and considering consequences rather than being swayed by emotions or impulsivity. This rational approach helps them make sound judgments even under difficult circumstances.</p>
+                <p>Greys don't get easily excited or overwhelmed, maintaining remarkable calm under pressure. Their emotional regulation skills allow them to think clearly when others might panic, making them excellent in emergency situations or high-stakes decision-making roles.</p>
+                <p>To others, Greys may sometimes appear detached or unemotional. This isn't due to a lack of feelings, but rather their tendency to process emotions internally rather than displaying them outwardly. Their reserved nature can make them seem mysterious to more expressive personality types.</p>
+                <p>Greys highly value privacy and independence. They prefer to manage their own affairs and make their own decisions without excessive input or interference from others. This self-reliance extends to their emotional lives as well, as they typically process feelings independently rather than seeking external validation or support.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Greys communicate in a clear, concise, and fact-oriented manner. They are direct without being harsh, preferring straightforward expression over embellishment or emotional language. Greys value accuracy and precision in communication, focusing on conveying information effectively rather than on social niceties or emotional connection.</p>
+                <p>In discussions, Greys remain calm and objective, even when topics become heated or controversial. They excel at bringing conversations back to facts and logical considerations when emotions threaten to derail productive dialogue. Greys typically listen carefully before responding, taking time to formulate thoughtful replies rather than reacting immediately. They appreciate when others communicate in a similarly clear and straightforward manner.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Grey personalities excel in careers that require objectivity, analytical thinking, and emotional stability. Their ability to remain calm under pressure and think clearly in complex situations makes them well-suited for roles involving critical decision-making and rational analysis.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Crisis Management</strong> - The ability to stay calm and think clearly during emergencies makes Greys excellent crisis managers.
+                            <div class="salary-range">$70,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Air Traffic Control</strong> - High-pressure situations requiring clarity, focus, and emotional stability play to Grey strengths.
+                            <div class="salary-range">$80,000 - $180,000</div>
+                        </li>
+                        <li>
+                            <strong>Judicial Positions</strong> - The combination of logical thinking and emotional detachment makes Greys effective judges and arbitrators.
+                            <div class="salary-range">$120,000 - $250,000</div>
+                        </li>
+                        <li>
+                            <strong>Data Analysis</strong> - Working with complex information systems where objectivity and clear thinking are essential suits Grey abilities.
+                            <div class="salary-range">$65,000 - $130,000</div>
+                        </li>
+                        <li>
+                            <strong>Risk Assessment</strong> - Evaluating potential problems with a detached, rational perspective allows Greys to excel in risk management.
+                            <div class="salary-range">$75,000 - $160,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Grey personalities are drawn to activities that engage their logical minds, allow for independent pursuit, and provide a sense of order or mastery. Their hobbies often involve methodical processes, problem-solving, or solitary exploration.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Strategic Games</strong> - Chess, poker, or strategy video games appeal to Greys because they require logical thinking, planning, and emotional control.
+                        </li>
+                        <li>
+                            <strong>Individual Sports</strong> - Activities like running, cycling, or swimming allow Greys to compete against themselves, set measurable goals, and exercise in solitude.
+                        </li>
+                        <li>
+                            <strong>Technical Hobbies</strong> - Programming, electronics, or mechanical projects provide logical challenges and the opportunity to create ordered systems.
+                        </li>
+                        <li>
+                            <strong>Reading Non-Fiction</strong> - Expanding knowledge through books on science, history, philosophy, or other factual subjects satisfies Greys' desire for understanding and clarity.
+                        </li>
+                        <li>
+                            <strong>Meditation</strong> - Practices that cultivate mental clarity and emotional balance appeal to Greys' preference for stability and control over their internal state.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Grey at Their Best</h3>
+                <p>At their best, Greys are clear-thinking, stable, and reliable individuals who bring rational perspective to chaotic situations. They have the ability to remain objective when others are caught up in emotional reactions, helping groups make sound decisions even under difficult circumstances. Their calm steadiness provides a sense of security to those around them, especially in times of crisis or uncertainty.</p>
+                <p>Mature Greys have learned to integrate their logical approach with appropriate emotional awareness and expression. They understand when detachment serves clarity and when connection serves understanding. At their best, Greys use their gifts for objectivity not to remain disconnected, but to help others navigate complex situations with wisdom and foresight, bringing a grounding influence that allows for better decisions and more balanced responses.</p>
+            </div>
+        </section>
+
+        <!-- Pink Personality -->
+        <section id="pink" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator pink"></div>
+                <h2>Pink Personality - Kind & Loving</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Pink personality type is characterized by warmth, compassion, and a nurturing approach to life. Pinks are natural caregivers who value emotional connection, harmony, and the wellbeing of others. They have a special ability to create atmospheres of acceptance and care, making them the heart-centered supporters and relationship-builders in any group. Their genuine kindness and empathy foster deep bonds and bring out the best in those around them.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Pinks are motivated by love, connection, and the desire to nurture and support others. They have a strong need for harmonious relationships and emotional reciprocity. Their approach to life is gentle, caring, and often sentimental. Pinks tend to be people-oriented, focusing on the human element in any situation rather than abstract principles or purely logical considerations.</p>
+                <p>The inner world of a Pink personality is rich with emotional awareness, romantic ideals, and a deep appreciation for beauty in relationships and experiences. They typically have a natural empathy that allows them to sense the feelings and needs of others. Pinks are internally driven by a desire to create and maintain loving connections and to make others feel valued and supported.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Pinks are highly nurturing and enjoy caring for others. They derive genuine satisfaction from supporting the people in their lives, whether through emotional encouragement, practical help, or creating comfortable environments. This caregiving nature extends to family, friends, colleagues, and sometimes even strangers in need.</p>
+                <p>They have a natural appreciation for romance, beauty, and sentimental moments. Pinks often notice and value the aesthetic and emotional dimensions of life that others might overlook. They enjoy creating beautiful spaces, celebrating special occasions, and preserving meaningful memories through traditions, photographs, or keepsakes.</p>
+                <p>Harmony is a top priority for Pinks, who strongly prefer peaceful relationships over confrontation. They may go to great lengths to avoid or resolve conflicts, sometimes at the expense of their own needs or preferences. This desire for harmony stems from their genuine concern for others' feelings and their own sensitivity to emotional tension.</p>
+                <p>Pinks tend to be gentle and soft-spoken in their interactions. Their communication style is typically warm, supportive, and aimed at maintaining positive connections. While this gentleness is authentic to their nature, it doesn't mean they lack strength – many Pinks show remarkable resilience and determination, especially when protecting or supporting those they care about.</p>
+                <p>With their trusting and open-hearted nature, Pinks can sometimes be overly trusting or sensitive. They may take criticism or rejection more personally than other personality types, and might occasionally misjudge others' intentions due to their tendency to see the best in people. However, this same openness allows them to form authentic connections that others might miss out on.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Pinks communicate in a warm, supportive, and emotionally expressive manner. They are natural listeners who validate others' feelings and experiences. Pinks value authentic emotional expression and conversations that foster connection and understanding. They excel at creating safe spaces where others feel comfortable sharing their thoughts and feelings.</p>
+                <p>In discussions, Pinks often focus on how ideas and decisions will affect people rather than just the logical or practical considerations. They tend to use personal stories and examples to illustrate points, making abstract concepts more relatable and human. Pinks may struggle with overly critical or confrontational communication styles, preferring collaborative approaches that maintain positive relationships.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Pink personalities excel in careers that allow them to care for others, create beauty, and foster positive relationships. Their natural empathy and nurturing abilities make them well-suited for roles involving support, healing, and creating environments of comfort and harmony.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Nursing & Healthcare</strong> - The combination of practical caregiving and emotional support aligns perfectly with Pink values.
+                            <div class="salary-range">$60,000 - $120,000</div>
+                        </li>
+                        <li>
+                            <strong>Early Childhood Education</strong> - Nurturing young children's development in a supportive environment plays to Pink strengths.
+                            <div class="salary-range">$35,000 - $70,000</div>
+                        </li>
+                        <li>
+                            <strong>Social Work</strong> - Helping vulnerable populations and supporting families through challenges fits with Pinks' compassionate nature.
+                            <div class="salary-range">$50,000 - $80,000</div>
+                        </li>
+                        <li>
+                            <strong>Wedding/Event Planning</strong> - Creating beautiful, meaningful celebrations allows Pinks to combine their aesthetic sense with their love of special moments.
+                            <div class="salary-range">$40,000 - $100,000+</div>
+                        </li>
+                        <li>
+                            <strong>Counseling & Therapy</strong> - Providing emotional support and guidance in a one-on-one setting utilizes Pinks' empathetic listening skills.
+                            <div class="salary-range">$50,000 - $120,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Pink personalities are drawn to activities that involve connection with others, creating beauty, or expressing care and sentiment. Their hobbies often have elements of nurturing, aesthetic appreciation, or maintaining meaningful traditions.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Creative Crafts</strong> - Making handmade gifts, scrapbooking, or creating personalized cards allows Pinks to express their affection in tangible, meaningful ways.
+                        </li>
+                        <li>
+                            <strong>Cooking & Baking</strong> - Preparing food for loved ones combines Pinks' nurturing nature with their enjoyment of creating comfort and showing care through practical means.
+                        </li>
+                        <li>
+                            <strong>Home Decoration</strong> - Creating beautiful, comfortable living spaces that reflect personal relationships and memories satisfies Pinks' aesthetic and sentimental inclinations.
+                        </li>
+                        <li>
+                            <strong>Volunteer Work</strong> - Supporting causes that help vulnerable populations, from children to animals, provides outlets for Pinks' compassion and caregiving instincts.
+                        </li>
+                        <li>
+                            <strong>Planning Celebrations</strong> - Organizing gatherings, maintaining family traditions, and marking important milestones allows Pinks to create meaningful experiences that nurture connections.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Pink at Their Best</h3>
+                <p>At their best, Pinks are compassionate, empathetic, and genuinely supportive individuals who bring warmth and care to all their interactions. They have the ability to create environments where people feel valued, understood, and emotionally secure. Their authentic kindness inspires others to show more compassion and consideration, creating ripple effects of positivity in their communities.</p>
+                <p>Mature Pinks have learned to balance their nurturing of others with appropriate self-care and healthy boundaries. They understand when giving supports growth and when it might enable dependency. At their best, Pinks use their remarkable gifts for empathy and connection not just to comfort others but to help them develop their own emotional resilience and capacity for meaningful relationships.</p>
+            </div>
+        </section>
+
+        <!-- Chocolate Personality -->
+        <section id="chocolate" class="personality-section">
+            <div class="color-heading">
+                <div class="color-indicator chocolate"></div>
+                <h2>Chocolate Personality - Grounded & Practical</h2>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title">Overview</h3>
+                <p>The Chocolate personality type is characterized by groundedness, reliability, and a strong sense of tradition. Chocolates are the dependable foundation of families and communities, valuing stability, commitment, and proven methods. They approach life with a steady, pragmatic perspective that emphasizes responsibility, perseverance, and the importance of creating security for themselves and their loved ones.</p>
+                
+                <h3 class="section-title">Core Characteristics</h3>
+                <p>Chocolates are motivated by security, tradition, and the fulfillment of responsibilities. They have a strong desire to build stable and reliable foundations for themselves and those who depend on them. Their approach to life is methodical, consistent, and often conservative in the sense of preserving what works well. Chocolates tend to be highly practical, focusing on tangible results and real-world applications rather than theoretical possibilities or untested innovations.</p>
+                <p>The inner world of a Chocolate personality is characterized by a strong moral framework, clear values, and a deep appreciation for heritage and tradition. They typically have a well-developed sense of right and wrong, with ethical principles often rooted in family teachings, cultural traditions, or religious beliefs. Chocolates are internally driven by a sense of duty and the satisfaction that comes from fulfilling their obligations and maintaining stability.</p>
+                
+                <h3 class="section-title">Behavior & Mindset</h3>
+                <p>Chocolates demonstrate exceptional loyalty and responsibility in all their relationships. Once they commit to a person, job, or cause, they remain steadfast through challenges and difficulties. This unwavering reliability makes them pillars of strength for their families, friends, and organizations.</p>
+                <p>They have a natural preference for tradition and structure. Chocolates value established practices and institutions that have proven effective over time. This appreciation for tradition isn't merely resistance to change, but a recognition that certain fundamental approaches to life have enduring value. Family traditions, cultural practices, and time-tested methods hold special significance for them.</p>
+                <p>Hardworking by nature, Chocolates approach their responsibilities with diligence and persistence. They believe in earning what they have through consistent effort rather than seeking shortcuts or quick fixes. This work ethic applies to their professional lives, family responsibilities, and personal goals.</p>
+                <p>Family typically comes first for Chocolates. They prioritize the wellbeing and stability of their family unit above career advancement or personal pursuits. This focus on family extends to creating nurturing home environments, maintaining family traditions, and ensuring security for future generations.</p>
+                <p>Chocolates value comfort, security, and stability. They work steadily to create safe, reliable environments where needs are met and risks are minimized. This preference for security influences their approach to finances, career choices, and major life decisions. While they might sometimes seem too serious or risk-averse, their cautious approach helps them build lasting security.</p>
+                
+                <h3 class="section-title">Communication Style</h3>
+                <p>Chocolates communicate in a straightforward, reliable manner that emphasizes clarity and substance over style. They value honesty, directness, and practical information. Chocolates tend to be more comfortable discussing concrete topics and tangible issues rather than abstract concepts or theoretical possibilities. Their communication is typically measured and thoughtful, reflecting their careful approach to life.</p>
+                <p>In conversations, Chocolates are often good listeners who prefer to fully understand a situation before offering opinions or advice. They may speak less than others but what they say carries weight due to its practicality and reliability. Chocolates appreciate communication that is clear, honest, and respectful of traditions and established values. They may become uncomfortable with communication styles that seem overly emotional, confrontational, or dismissive of traditional values.</p>
+                
+                <div class="career-section">
+                    <h3 class="section-title">Career Paths & Salary Ranges</h3>
+                    <p>Chocolate personalities excel in careers that require reliability, attention to detail, and respect for established procedures. Their steady nature and commitment to quality make them well-suited for roles involving maintenance of essential systems, upholding traditions, and providing dependable service.</p>
+                    
+                    <ul class="career-list">
+                        <li>
+                            <strong>Financial Services</strong> - Banking, accounting, or financial planning allows Chocolates to help others achieve security and stability.
+                            <div class="salary-range">$60,000 - $150,000</div>
+                        </li>
+                        <li>
+                            <strong>Skilled Trades</strong> - Carpentry, plumbing, electrical work, and other trades appeal to Chocolates' appreciation for tangible results and reliable service.
+                            <div class="salary-range">$45,000 - $100,000</div>
+                        </li>
+                        <li>
+                            <strong>Healthcare Administration</strong> - Ensuring the smooth operation of essential health services fits with Chocolates' sense of responsibility and order.
+                            <div class="salary-range">$65,000 - $130,000</div>
+                        </li>
+                        <li>
+                            <strong>Law Enforcement</strong> - Upholding community standards and providing protection aligns with Chocolates' values of security and tradition.
+                            <div class="salary-range">$55,000 - $110,000</div>
+                        </li>
+                        <li>
+                            <strong>Agriculture & Land Management</strong> - Working with the land and maintaining sustainable practices connects with Chocolates' appreciation for tradition and long-term thinking.
+                            <div class="salary-range">$40,000 - $90,000</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hobbies-section">
+                    <h3 class="section-title">Common Hobbies & Interests</h3>
+                    <p>Chocolate personalities are drawn to activities that connect them with tradition, provide tangible results, and contribute to family or community wellbeing. Their hobbies often involve elements of craftsmanship, preservation, or practical skills development.</p>
+                    
+                    <ul class="hobbies-list">
+                        <li>
+                            <strong>Home Improvement</strong> - Building, repairing, and maintaining their homes allows Chocolates to create comfortable, secure environments while using practical skills.
+                        </li>
+                        <li>
+                            <strong>Traditional Crafts</strong> - Woodworking, quilting, canning, or other traditional skills connect Chocolates to heritage while producing useful items for their families.
+                        </li>
+                        <li>
+                            <strong>Gardening & Farming</strong> - Growing food and tending to plants satisfies Chocolates' desire to provide for their families and connect with natural cycles.
+                        </li>
+                        <li>
+                            <strong>Family History & Genealogy</strong> - Researching and preserving family stories and traditions helps Chocolates maintain connections across generations.
+                        </li>
+                        <li>
+                            <strong>Community Service</strong> - Volunteer work with established community organizations allows Chocolates to contribute meaningfully while upholding important social institutions.
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="section-title">Chocolate at Their Best</h3>
+                <p>At their best, Chocolates are dependable, principled, and deeply committed individuals who provide essential stability in their families and communities. They have the ability to maintain important traditions and systems while adapting thoughtfully to necessary changes. Their practical wisdom and steady presence create secure foundations upon which others can build and thrive.</p>
+                <p>Mature Chocolates have learned to balance their natural conservatism with openness to beneficial innovations. They understand when tradition provides valuable guidance and when new approaches might better serve enduring values. At their best, Chocolates use their remarkable gifts for commitment and practicality not just to maintain what is, but to create lasting legacies that support and nurture future generations while honoring the wisdom of the past.</p>
+            </div>
+        </section>
+        
+        <a href="#" class="back-to-top" id="backToTop">↑</a>
+        
+    </main>
+    
+    <script>
+        // Back to top button functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

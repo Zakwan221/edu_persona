@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antisocial Personality - PersonaQuest</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .personality-detail {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .personality-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 1rem;
+        }
+
+        .personality-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .characteristic-list {
+            list-style-type: none;
+            margin-left: 1rem;
+        }
+
+        .characteristic-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .characteristic-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tip-card {
+            background: var(--background-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .tip-title {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+
+        .back-button {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-section {
+            background-color: var(--primary-light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0 1rem 0;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: var(--primary-dark);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="/api/placeholder/40/40" alt="PersonaQuest Logo" class="logo">
+            <h1>PersonaQuest</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="welcome.html" class="nav-link">Home</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonality.html" class="nav-link active">Bad personality Test</a></li>
+            <li><a href="badpersonality.html" class="nav-link">Bad personality</a></li>
+            <li><a href="badpersonality.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main class="personality-detail">
+        <div class="personality-header">
+            <h1>Antisocial Personality Traits</h1>
+            <p>Understanding and overcoming social withdrawal and communication challenges</p>
+        </div>
+
+        <section class="personality-section">
+            <h2 class="section-title">What is an Antisocial Personality?</h2>
+            <p>In this context, antisocial personality refers to patterns of social withdrawal, communication difficulties, and challenges in building relationships, rather than antisocial personality disorder. People with these traits often struggle with social interactions due to low confidence, fear of rejection, and underdeveloped social skills.</p>
+            
+            <div class="characteristic-list-container">
+                <h3>Common Characteristics:</h3>
+                <ul class="characteristic-list">
+                    <li>Poor or awkward communication skills in social settings</li>
+                    <li>Low self-confidence and negative self-image</li>
+                    <li>Significant difficulty building and maintaining relationships</li>
+                    <li>Extreme fear of rejection and sensitivity to criticism</li>
+                    <li>Avoidance of social situations and gatherings</li>
+                    <li>Preference for solitary activities over group interactions</li>
+                    <li>Anxiety or discomfort in unfamiliar social environments</li>
+                    <li>Difficulty reading social cues and understanding unspoken social rules</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="personality-section">
+            <h2 class="section-title">How to Overcome Antisocial Tendencies</h2>
+            <p>Overcoming antisocial patterns involves gradually building social skills and confidence. Here are some effective strategies:</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4 class="tip-title">Start Small</h4>
+                    <p>Begin with brief, structured social interactions and gradually increase duration and complexity as comfort grows. Even saying hello to a neighbor is progress.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Develop Social Skills</h4>
+                    <p>Actively learn and practice conversation skills, active listening, and appropriate body language through books, videos, or structured classes.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Challenge Negative Thoughts</h4>
+                    <p>Identify and question pessimistic assumptions about social interactions ("Everyone will judge me") that increase anxiety and avoidance.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Find Common Interest Groups</h4>
+                    <p>Join groups focused on activities you enjoy, where social interaction happens naturally around shared interests, reducing pressure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="personality-section">
+            <h2 class="section-title">How to Resist Social Withdrawal</h2>
+            <p>When you notice the urge to avoid social situations, these techniques can help you resist the pattern:</p>
+            
+            <div class="characteristic-list-container">
+                <ul class="characteristic-list">
+                    <li>Set a minimum socializing goal (e.g., "I'll stay for 30 minutes, then reevaluate")</li>
+                    <li>Prepare conversation starters or questions in advance to reduce anxiety</li>
+                    <li>Practice deep breathing or other relaxation techniques before social events</li>
+                    <li>Reward yourself for social efforts, regardless of how you think it went</li>
+                    <li>Bring a supportive friend to challenging social situations initially</li>
+                    <li>Focus on asking questions and listening rather than worrying about what to say</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="personality-section">
+            <h2 class="section-title">Professional Tips for Developing Social Confidence</h2>
+            <p>Mental health professionals recommend these strategies for overcoming antisocial tendencies:</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4 class="tip-title">Cognitive Behavioral Therapy</h4>
+                    <p>CBT can help identify and change negative thought patterns that fuel social anxiety and avoidance behaviors.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Social Skills Training</h4>
+                    <p>Structured programs teach specific communication techniques and provide opportunities for practice in a supportive environment.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Exposure Therapy</h4>
+                    <p>Gradual, systematic exposure to increasingly challenging social situations helps reduce anxiety and build confidence over time.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h4 class="tip-title">Support Groups</h4>
+                    <p>Groups for people with social anxiety or shyness provide understanding, encouragement, and opportunities to practice social skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h3>Ready to Build Your Social Confidence?</h3>
+            <p>With practice and the right support, you can develop stronger social skills and create fulfilling relationships.</p>
+            <a href="test.html" class="cta-button">Take Our Personality Assessment</a>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="badpersonality.html" class="back-button">← Back to Personality Types</a>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

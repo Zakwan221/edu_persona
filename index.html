@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EduPersona</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="welcome.css">
+    <style>
+        /* Additional styles for enhanced welcome page */
+        :root {
+            --red: #FF5252;
+            --blue: #1E88E5;
+            --green: #4CAF50;
+            --yellow: #FFC107;
+            --purple: #9C27B0;
+            --black: #212121;
+            --white: #FFFFFF;
+            --grey: #9E9E9E;
+            --pink: #EC407A;
+            --chocolate: #795548;
+            --green-light: #81C784;
+            --green-dark: #388E3C;
+            --green-accent: #00C853;
+        }
+
+        /* Hero section enhancements */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--green-dark) 100%);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .color-orbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .color-orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(20px);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(5%, 5%) scale(1.1); }
+            50% { transform: translate(0, 10%) scale(0.9); }
+            75% { transform: translate(-5%, 5%) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Feature cards enhancements */
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 2rem;
+        }
+
+        .feature-card {
+            position: relative;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            background-color: var(--green-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /* Slideshow section */
+        .slideshow-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .slideshow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+        }
+
+        .slideshow-slides {
+            position: relative;
+            height: 500px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-color: white;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* CTA section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--green-dark) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .big-cta-button {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .big-cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .features-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="logo.png" alt="PersonaQuest Logo" class="logo">
+            <h1>EduPersona</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="welcome.html" class="nav-link active">Home</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+            <li><a href="test.html" class="nav-link">Take Test</a></li>
+            <li><a href="info.html" class="nav-link">Personalities</a></li>
+            <li><a href="badpersonalitymain.html" class="nav-link">Negative Trait</a></li>
+            <li><a href="aichatbox.html" class="nav-link">AI Chat Box</a></li>
+            <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main class="welcome-container">
+        <!-- Hero Section with Animated Color Orbs -->
+        <section class="hero-section">
+            <div class="color-orbs">
+                <div class="color-orb" style="background-color: var(--green-light); width: 300px; height: 300px; top: -150px; left: 10%; animation-delay: 0s;"></div>
+                <div class="color-orb" style="background-color: var(--primary-color); width: 250px; height: 250px; bottom: -100px; right: 15%; animation-delay: 2s;"></div>
+                <div class="color-orb" style="background-color: var(--green-dark); width: 200px; height: 200px; top: 40%; left: -100px; animation-delay: 4s;"></div>
+                <div class="color-orb" style="background-color: var(--green-accent); width: 180px; height: 180px; bottom: 30%; right: -50px; animation-delay: 1s;"></div>
+                <div class="color-orb" style="background-color: var(--green-light); width: 220px; height: 220px; top: 10%; right: 20%; animation-delay: 3s;"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Your Color Personality</h1>
+                <p class="hero-subtitle">Unlock your true self through our innovative 40-question color personality assessment. Discover your strengths, weaknesses, and perfect career match!</p>
+                <div class="hero-buttons">
+                    <a href="test.html" class="cta-button">Start Your Test</a>
+                    <a href="info.html" class="secondary-button">Explore Personalities</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Features Section -->
+        <section class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">CP</div>
+                <h3>Color Personality</h3>
+                <p>Our 40-question assessment reveals which of our 10 unique color personalities matches you best. Are you a passionate Red, a harmonious Blue, or perhaps a cheerful Yellow?</p>
+                <a href="test.html" class="button button-primary mt-2">Take Color Test</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">CI</div>
+                <h3>Career & Life Insights</h3>
+                <p>Discover careers that align with your personality, understand your strengths, weaknesses, and find your best love matches based on color compatibility.</p>
+                <a href="info.html" class="button button-primary mt-2">Learn More</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">NT</div>
+                <h3>Negative Trait Analysis</h3>
+                <p>Take our 45-question assessment to identify potential negative personality traits and learn practical strategies to overcome them.</p>
+                <a href="badpersonalitymain.html" class="button button-primary mt-2">Discover Negative Traits</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">PM</div>
+                <h3>Personality Music</h3>
+                <p>Experience music that resonates with your personality type. Enhance your mood and productivity with curated playlists for each color personality.</p>
+                <a href="music.html" class="button button-primary mt-2">Explore Music</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">CS</div>
+                <h3>Connect & Share</h3>
+                <p>Create an account to save your results, chat with friends, compare personalities, and share your insights on social media.</p>
+                <a href="login.html" class="button button-primary mt-2">Login or Register</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">FB</div>
+                <h3>Help Us Improve</h3>
+                <p>Share your experience and suggestions to help us enhance PersonaQuest for all users. Your feedback matters!</p>
+                <a href="feedback.html" class="button button-primary mt-2">Give Feedback</a>
+            </div>
+        </section>
+
+        <!-- Slideshow Section -->
+        <section class="slideshow-section">
+            <div class="slideshow-container">
+                <div class="slideshow-slides">
+                    <div class="slide active">
+                        <img src="10colourrr.png" alt="10 Personality Colors" class="slide-image">
+                    </div>
+                    <div class="slide">
+                        <img src="9neg.png" alt="9 Bad Personality Types" class="slide-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Discover Your True Colors?</h2>
+            <p class="cta-subtitle">Join thousands of users who have unlocked insights about themselves, improved their relationships, and found their ideal career path.</p>
+            <div class="cta-buttons">
+                <a href="test.html" class="big-cta-button">Take the Test Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        
+        <p class="copyright">© 2025 PersonaQuest. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="welcome.js"></script>
+</body>
+</html>
